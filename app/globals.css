@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0b0a0c;
+  --bg-raised: #151317;
+  --glass: rgba(20, 18, 22, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --text: #f5f3f0;
+  --text-dim: rgba(245, 243, 240, 0.62);
+  --accent: #ff5a1f;
+  --line: rgba(255, 255, 255, 0.1);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-raised: var(--bg-raised);
+  --color-glass: var(--glass);
+  --color-text: var(--text);
+  --color-text-dim: var(--text-dim);
+  --color-accent: var(--accent);
+  --color-line: var(--line);
+
+  --font-sans: var(--font-jakarta);
+  --font-serif: var(--font-instrument);
+  --font-mono: var(--font-jetbrains);
+
+  --radius-card: 20px;
+
+  --text-hero: clamp(40px, 7vw, 96px);
+  --text-hero--line-height: 0.95;
+  --text-section: clamp(32px, 5vw, 64px);
+  --text-section--line-height: 1.05;
+  --text-wordmark: clamp(80px, 18vw, 260px);
+  --text-wordmark--line-height: 0.9;
+}
+
+@layer base {
+  html {
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans), system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  @media (min-width: 1024px) {
+    body {
+      font-size: 18px;
+    }
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--bg);
+  }
+}
+
+@layer components {
+  /* Translucent dark panel for small cards and tags */
+  .glass {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  /* "● SECTION NAME" label */
+  .dot-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .dot-label::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--accent);
+  }
+
+  /* Italic serif accent word inside a headline */
+  .accent-word {
+    font-family: var(--font-serif), Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+    letter-spacing: 0;
+  }
+}
