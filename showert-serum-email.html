@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The £60 serum you rinse off in tap water</title>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Fredoka:wght@500;600&family=Mulish:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Cocogoose';src:url('https://milkyplant.com/cdn/shop/files/Cocogoose.woff2?v=1706593241') format('woff2');font-weight:400;font-display:block;unicode-range:U+0000-002F,U+003A-10FFFF}
+@font-face{font-family:'Cocogoose';src:url('https://milkyplant.com/cdn/shop/files/COCOGOOSE-DemiBold.woff2?v=1706593241') format('woff2');font-weight:600;font-display:block;unicode-range:U+0000-002F,U+003A-10FFFF}
+:root{--blue:#155398;--cream:#F6EAE2;--red:#F24635;--ink:#1A1B1E;--display:'Cocogoose','Fredoka',system-ui,sans-serif;--body:'Mulish','Helvetica Neue',Arial,sans-serif;--num:'Fredoka',system-ui,sans-serif;--mono:'Courier Prime','Courier New',monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#E9E4DF;font-family:var(--body);color:var(--ink);-webkit-font-smoothing:antialiased}
+.email{width:600px;margin:0 auto;overflow:hidden;background:linear-gradient(180deg,#EFD2C8 0%,#E4BFB1 40%,#EED3CB 55%,#F3E1DA 75%,#F6EAE2 100%)}
+img{display:block;border:0;max-width:none}
+a{text-decoration:none;color:inherit}
+.d{font-family:var(--display);font-weight:600;text-transform:lowercase;letter-spacing:-.01em}
+.btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--display);font-weight:600;font-size:17px;text-transform:lowercase;border-radius:999px;padding:20px 44px}
+.btn svg{width:18px;height:18px}
+.btn-blue{background:var(--blue);color:var(--cream);box-shadow:0 14px 30px rgba(21,83,152,.36),inset 0 1px 0 rgba(255,255,255,.25)}
+.btn-red{background:var(--red);color:#fff;box-shadow:0 16px 34px rgba(242,70,53,.4),inset 0 1px 0 rgba(255,255,255,.3)}
+
+/* HERO */
+.hero{position:relative;height:750px}
+.hero .bg{position:absolute;inset:0;width:600px;height:750px}
+.hero:after{content:'';position:absolute;left:0;right:0;bottom:0;height:150px;background:linear-gradient(180deg,rgba(228,191,177,0),#E4BFB1 85%)}
+.hero .logo{position:absolute;top:30px;left:40px;width:118px}
+.hero h1{position:absolute;top:92px;left:40px;color:var(--blue);font-size:50px;line-height:1}
+.hero .then{position:absolute;top:258px;left:42px;font-family:var(--display);font-weight:600;font-size:26px;color:var(--red);text-transform:lowercase;transform:rotate(-3deg)}
+.hero .then:after{content:'';position:absolute;left:0;right:0;bottom:-6px;height:3px;background:var(--red);border-radius:3px;transform:rotate(1deg)}
+.hero .cta{position:absolute;left:0;right:0;top:644px;text-align:center;z-index:2}
+
+/* RECEIPT */
+.s2{position:relative;padding:14px 0 0}
+.receipt{position:relative;width:360px;margin:0 auto;padding:30px 28px 46px;background:#FFFEFB;transform:rotate(-2deg);font-family:var(--mono);color:#2b2b2b;
+  -webkit-mask:linear-gradient(#000,#000) top/100% calc(100% - 14px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/18px 14px repeat-x;
+  mask:linear-gradient(#000,#000) top/100% calc(100% - 14px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/18px 14px repeat-x;
+  filter:drop-shadow(0 26px 34px rgba(120,60,50,.22))}
+.receipt .top{text-align:center;font-size:13px;letter-spacing:.18em;font-weight:700}
+.receipt .sm{text-align:center;font-size:11px;color:#777;margin-top:4px}
+.receipt hr{border:0;border-top:1.5px dashed #bbb;margin:14px 0}
+.ln{display:flex;justify-content:space-between;font-size:14px;line-height:25px}
+.ln.tot{font-weight:700;font-size:16px}
+.ln.water{color:#B23526;font-weight:700}
+.stamp{position:absolute;right:-8px;bottom:62px;transform:rotate(-14deg);border:3px solid rgba(242,70,53,.85);color:rgba(242,70,53,.9);font-family:var(--display);font-weight:600;font-size:20px;text-transform:lowercase;padding:6px 14px;border-radius:8px;letter-spacing:.02em;mix-blend-mode:multiply}
+
+/* THE FIX */
+.fix{position:relative;padding:40px 40px 66px}
+.fix h2{text-align:center;color:var(--blue);font-size:34px;line-height:1.06}
+.row{display:grid;grid-template-columns:190px 1fr;gap:12px;align-items:center;margin-top:16px}
+.prod{position:relative;height:330px}
+.prod .glow{position:absolute;left:0;top:40px;width:200px;height:260px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.9),rgba(255,255,255,0))}
+.prod img{position:absolute;left:-96px;top:-16px;width:380px;transform:rotate(-10deg);filter:drop-shadow(18px 24px 22px rgba(120,60,50,.28))}
+.prod .tag{position:absolute;left:112px;top:206px;background:#fff;border-radius:16px;padding:10px 14px;box-shadow:0 12px 26px rgba(120,60,50,.18);transform:rotate(4deg)}
+.prod .tag b{display:block;font-family:var(--num);font-weight:600;font-size:22px;color:var(--blue);line-height:1}
+.prod .tag small{font-size:11px;font-weight:700;color:#8a7f78}
+.pts{display:flex;flex-direction:column;gap:10px}
+.pt{background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.8);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-radius:20px;padding:15px 18px;box-shadow:0 12px 28px rgba(120,60,50,.10)}
+.pt b{display:block;font-family:var(--display);font-weight:600;font-size:15.5px;color:var(--blue);text-transform:lowercase;line-height:1.2}
+.pt span{display:block;font-size:13.5px;line-height:1.45;color:#4a3f3c;margin-top:3px}
+.fix .cta{text-align:center;margin-top:34px}
+.fine{text-align:center;margin-top:14px;font-size:12.5px;font-weight:700;color:#8a7f78}
+</style>
+</head>
+<body>
+<div class="email">
+
+  <!-- HERO -->
+  <section class="hero">
+    <img class="bg" src="https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261009_084008_609121e3-77ef-4888-ab43-1016373f336e.png" alt="A shelf of skincare in front of a running shower">
+    <img class="logo" src="https://cdn.shopify.com/s/files/1/0558/2114/0134/files/MilkyPlant-Logo_horizontal_Wheat_1_3.png?v=1707741777" alt="milky plant">
+    <h1 class="d">serum.<br>mask.<br>oil.</h1>
+    <p class="then">then tap water.</p>
+    <div class="cta"><a class="btn btn-blue" href="https://milkyplant.com/products/the-showert">filter the water first <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  </section>
+
+  <!-- RECEIPT -->
+  <section class="s2">
+    <div class="receipt">
+      <p class="top">YOUR BATHROOM SHELF</p>
+      <p class="sm">Receipt, roughly</p>
+      <hr>
+      <div class="ln"><span>Serum (the good one)</span><span>£60.00</span></div>
+      <div class="ln"><span>Face mask</span><span>£38.00</span></div>
+      <div class="ln"><span>Facial oil</span><span>£45.00</span></div>
+      <div class="ln"><span>Moisturiser</span><span>£32.00</span></div>
+      <div class="ln"><span>Toner</span><span>£24.00</span></div>
+      <hr>
+      <div class="ln tot"><span>TOTAL</span><span>£199.00</span></div>
+      <hr>
+      <div class="ln water"><span>Water it all meets</span><span>UNFILTERED</span></div>
+      <div class="stamp">rinsed off</div>
+    </div>
+  </section>
+
+  <!-- THE FIX -->
+  <section class="fix">
+    <h2 class="d">fix the water.<br>then the shelf.</h2>
+    <div class="row">
+      <div class="prod">
+        <div class="glow"></div>
+        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261006_170943_57ef981c-97fd-4ac5-b0e9-8a5f34e9d288.png" alt="The ShowerT">
+        <div class="tag"><b>£79.99</b><small>less than half that shelf</small></div>
+      </div>
+      <div class="pts">
+        <div class="pt"><b>the shower goes on first</b><span>Skincare goes on after. The water sets the starting point.</span></div>
+        <div class="pt"><b>5 stages, every wash</b><span>Less chlorine in the water that hits your face and hair, every single day.</span></div>
+        <div class="pt"><b>on in a minute</b><span>Fits any standard shower hose. No tools, no plumber.</span></div>
+      </div>
+    </div>
+    <div class="cta"><a class="btn btn-red" href="https://milkyplant.com/products/the-showert">try the showert <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    <p class="fine">£79.99 &nbsp;·&nbsp; Filter lasts up to 3 months &nbsp;·&nbsp; 30 days to love it or return it</p>
+  </section>
+
+</div>
+</body>
+</html>

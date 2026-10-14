@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your shampoo isn't the problem</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Mulish:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Cocogoose';src:url('https://milkyplant.com/cdn/shop/files/Cocogoose.woff2?v=1706593241') format('woff2');font-weight:400;font-display:block;unicode-range:U+0000-002F,U+003A-10FFFF}
+@font-face{font-family:'Cocogoose';src:url('https://milkyplant.com/cdn/shop/files/COCOGOOSE-DemiBold.woff2?v=1706593241') format('woff2');font-weight:600;font-display:block;unicode-range:U+0000-002F,U+003A-10FFFF}
+:root{--blue:#155398;--cream:#F6EAE2;--red:#F24635;--ink:#1A1B1E;--lilac:#EED3FF;--mint:#CDE8E3;--display:'Cocogoose','Fredoka',system-ui,sans-serif;--body:'Mulish','Helvetica Neue',Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#E9E4DF;font-family:var(--body);color:var(--ink);-webkit-font-smoothing:antialiased}
+.email{width:600px;margin:0 auto;background:var(--cream);overflow:hidden}
+.close+.foot{margin-top:-48px;position:relative}
+.close{padding-bottom:112px!important}
+img{display:block;border:0}
+a{text-decoration:none;color:inherit}
+.d{font-family:var(--display);font-weight:600;text-transform:lowercase;letter-spacing:-.01em}
+
+.btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--display);font-weight:600;font-size:17px;text-transform:lowercase;border-radius:999px;padding:20px 44px}
+.btn svg{width:18px;height:18px}
+.btn-blue{background:var(--blue);color:var(--cream);box-shadow:0 14px 30px rgba(21,83,152,.38),inset 0 1px 0 rgba(255,255,255,.25)}
+.btn-red{background:var(--red);color:#fff;box-shadow:0 16px 34px rgba(242,70,53,.42),inset 0 1px 0 rgba(255,255,255,.3)}
+
+/* HERO */
+.hero{position:relative;height:893px;background:#F1DCF6}
+.hero .bg{position:absolute;inset:0;width:600px;height:893px;object-fit:cover}
+.prod{position:absolute;left:0;top:0;width:600px;height:893px;pointer-events:none}
+.ph{position:absolute;left:44px;top:182px;width:511px;height:511px;max-width:none;transform:rotate(11deg);filter:drop-shadow(26px 26px 28px rgba(80,50,110,.32)) drop-shadow(0 6px 10px rgba(80,50,110,.18))}
+.refl{transform:scaleY(-1);transform-origin:50% 676px;opacity:.3;filter:blur(1.5px);-webkit-mask-image:linear-gradient(to bottom,transparent 52%,#000 74%);mask-image:linear-gradient(to bottom,transparent 52%,#000 74%)}
+.refl .ph{filter:none}
+.hero:after{content:'';position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(180deg,rgba(246,234,226,0),#F6EAE2)}
+.hero .panel{z-index:2}
+.hero .logo{position:absolute;top:30px;left:235px;width:130px}
+.hero h1{position:absolute;top:84px;left:0;width:600px;text-align:center;color:var(--blue);font-size:44px;line-height:1.05}
+.hero .sub{position:absolute;top:196px;left:0;width:600px;text-align:center;font-size:17px;font-weight:600;color:#3d4a66}
+.glass{background:rgba(255,255,255,.38);-webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4);border:1px solid rgba(255,255,255,.7);box-shadow:0 20px 50px rgba(60,40,110,.16)}
+.hero .panel{position:absolute;left:50px;right:50px;top:704px;border-radius:30px;padding:22px 24px 24px;text-align:center}
+.hero .meta{display:flex;justify-content:center;gap:8px;margin-bottom:16px}
+.hero .meta span{font-size:12.5px;font-weight:800;color:var(--blue);background:rgba(255,255,255,.6);border-radius:999px;padding:6px 12px}
+
+/* LIMESCALE */
+.scale{position:relative;z-index:3;padding:40px 40px 0;text-align:center}
+.scale h2{color:var(--blue);font-size:32px;line-height:1.1}
+.scale .shot{position:relative;margin:28px auto 0;width:520px;height:330px;border-radius:30px;overflow:hidden;box-shadow:0 30px 60px rgba(10,30,70,.35);margin-bottom:-150px}
+.scale .shot img{width:100%;height:100%;object-fit:cover}
+.scale .tag{position:absolute;left:18px;bottom:18px;right:18px;border-radius:20px;padding:14px 18px;text-align:left;font-size:15px;line-height:1.45;color:#1A1B1E;background:rgba(246,234,226,.55);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.6)}
+.scale .tag b{color:var(--blue)}
+
+/* THREE THINGS */
+.three{position:relative;padding:200px 40px 120px;overflow:hidden;background:var(--blue);border-radius:48px 48px 0 0}
+.three:after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:64px;background:#F6EAE2;border-radius:48px 48px 0 0}
+.three .blur{position:absolute;inset:-40px;background:url('https://milkyplant.com/cdn/shop/files/pdp-chlorine-photo-800x520.jpg?width=800') center/cover;filter:blur(14px) saturate(.9);opacity:.55}
+.three .tint{position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,83,152,.9),rgba(15,63,117,.9))}
+.three .in{position:relative}
+.three h2{color:var(--cream);font-size:32px;line-height:1.1;text-align:center}
+.cards{margin-top:30px;display:flex;flex-direction:column;gap:12px}
+.card{display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:center;border-radius:22px;padding:18px 22px;background:rgba(246,234,226,.12);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(246,234,226,.28);box-shadow:0 12px 30px rgba(0,0,0,.15)}
+.card i{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.card svg{width:26px;height:26px}
+.card h3{font-family:var(--display);font-weight:600;font-size:19px;color:var(--cream);text-transform:lowercase}
+.card p{font-size:14.5px;line-height:1.5;color:rgba(246,234,226,.82);margin-top:3px}
+
+/* FIX */
+.fix{padding:20px 40px 60px;background:linear-gradient(180deg,#F6EAE2 0%,#F3E2F4 100%)}
+.fix .wrap{display:grid;grid-template-columns:210px 1fr;gap:26px;align-items:center}
+.fix .cart{width:210px;height:290px;border-radius:30px;overflow:hidden;background:#EBD2FA;box-shadow:0 24px 46px rgba(90,50,140,.22)}
+.fix .cart img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+.fix h2{color:var(--blue);font-size:30px;line-height:1.08}
+.fix p{font-size:15px;line-height:1.55;color:#3a3b40;margin-top:12px}
+.stages{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.stages span{font-size:12px;font-weight:800;color:var(--blue);background:#fff;border-radius:999px;padding:7px 11px;box-shadow:0 4px 12px rgba(21,83,152,.1)}
+.fix .cta{text-align:center;margin-top:36px}
+
+/* CLOSE */
+.close{padding:8px 40px 64px;background:#F3E2F4;text-align:center}
+.close .box{border-radius:32px;background:#fff;padding:34px 30px 32px;box-shadow:0 26px 60px rgba(21,83,152,.16)}
+.perks{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.perk{font-size:13px;font-weight:700;color:#3a3b40;line-height:1.35}
+.perk i{width:46px;height:46px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+.perk svg{width:22px;height:22px}
+.close .price{margin-top:26px;color:var(--blue)}
+.close .price b{font-family:var(--display);font-weight:600;font-size:40px}
+.close .price small{display:block;font-size:13px;font-weight:700;color:#66676c;margin-top:2px}
+.close .cta{margin-top:20px}
+
+/* FOOTER */
+.foot{background:var(--blue);border-radius:48px 48px 0 0;color:var(--cream);padding:40px 48px 36px;text-align:center}
+.foot img{width:130px;margin:0 auto}
+.flinks{margin-top:18px;font-size:13px;font-weight:700;display:flex;justify-content:center;gap:20px}
+.legal{margin-top:16px;font-size:11.5px;line-height:1.6;opacity:.6}
+.legal a{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="email">
+
+  <!-- HERO -->
+  <section class="hero">
+    <img class="bg" src="https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261006_170953_79bf5628-62b5-4c59-ac66-d46217c749ae.png" alt="">
+    <div class="prod refl"><img class="ph" src="https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261006_170943_57ef981c-97fd-4ac5-b0e9-8a5f34e9d288.png" alt=""></div>
+    <div class="prod"><img class="ph" src="https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261006_170943_57ef981c-97fd-4ac5-b0e9-8a5f34e9d288.png" alt="The ShowerT filtered showerhead"></div>
+    <img class="logo" src="https://cdn.shopify.com/s/files/1/0558/2114/0134/files/MilkyPlant-Logo_horizontal_Wheat_1_3.png?v=1707741777" alt="milky plant">
+    <h1 class="d">your shampoo isn't<br>the problem.</h1>
+    <p class="sub">It's what comes out of the showerhead.</p>
+    <div class="panel glass">
+      <div class="meta"><span>5-stage filter</span><span>Fits in 60 seconds</span><span>£79.99</span></div>
+      <a class="btn btn-blue" href="https://milkyplant.com/products/the-showert">shop the showert <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </section>
+
+  <!-- LIMESCALE -->
+  <section class="scale">
+    <h2 class="d">see that white crust?</h2>
+    <div class="shot">
+      <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261006_171351_e4f21c86-1455-4e71-ac3d-60a2b578d0b6.png" alt="Showerhead covered in limescale">
+      <div class="tag">That's limescale. <b>The same minerals land on your hair every time you wash it.</b></div>
+    </div>
+  </section>
+
+  <!-- THREE THINGS -->
+  <section class="three">
+    <div class="blur"></div><div class="tint"></div>
+    <div class="in">
+      <h2 class="d">what's in your<br>shower water</h2>
+      <div class="cards">
+        <div class="card">
+          <i style="background:#CDE8E3"><svg viewBox="0 0 24 24" fill="none" stroke="#00664F" stroke-width="2" stroke-linecap="round"><path d="M12 3c3 4 6 7 6 10.5A6 6 0 0 1 6 13.5C6 10 9 7 12 3z"/><path d="M9 14h6"/></svg></i>
+          <div><h3>chlorine</h3><p>Added to keep tap water safe to drink. In a hot shower it can leave hair feeling dry.</p></div>
+        </div>
+        <div class="card">
+          <i style="background:#F6EAE2"><svg viewBox="0 0 24 24" fill="none" stroke="#155398" stroke-width="2" stroke-linecap="round"><circle cx="7" cy="8" r="2.4"/><circle cx="16" cy="7" r="1.8"/><circle cx="12" cy="15" r="3"/><circle cx="18.5" cy="16" r="1.5"/></svg></i>
+          <div><h3>limescale minerals</h3><p>Calcium and magnesium that can leave a dull film behind.</p></div>
+        </div>
+        <div class="card">
+          <i style="background:#F9C9C8"><svg viewBox="0 0 24 24" fill="none" stroke="#B23526" stroke-width="2" stroke-linecap="round"><path d="M3 9h7v6H3zM14 9h7v6h-7zM10 12h4"/></svg></i>
+          <div><h3>metals from old pipes</h3><p>Rust and dissolved metals picked up on the way to your tap.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIX -->
+  <section class="fix">
+    <div class="wrap">
+      <div class="cart"><img src="https://milkyplant.com/cdn/shop/files/hf_20260621_054654_c45363d9-7e33-48cd-940d-45bf329b38e0.png?width=600" alt="ShowerT filter cartridge"></div>
+      <div>
+        <h2 class="d">five stages.<br>one cartridge.</h2>
+        <p>ShowerT reduces chlorine, metals and impurities before the water reaches you. Swap the cartridge every 3 months.</p>
+        <div class="stages"><span>KDF-55</span><span>Calcium sulphite</span><span>Activated carbon</span><span>Vitamin C</span><span>Ceramic beads</span></div>
+      </div>
+    </div>
+    <div class="cta"><a class="btn btn-blue" href="https://milkyplant.com/products/the-showert">filter my shower <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  </section>
+
+  <!-- CLOSE -->
+  <section class="close">
+    <div class="box">
+      <div class="perks">
+        <div class="perk"><i><svg viewBox="0 0 24 24" fill="none" stroke="#155398" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg></i>Fits in 60 seconds, no tools</div>
+        <div class="perk"><i><svg viewBox="0 0 24 24" fill="none" stroke="#155398" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/></svg></i>5 spray settings, full pressure</div>
+        <div class="perk"><i><svg viewBox="0 0 24 24" fill="none" stroke="#155398" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></i>30 days to love it or return it</div>
+      </div>
+      <div class="price"><b>£79.99</b><small>Free UK delivery</small></div>
+      <div class="cta"><a class="btn btn-red" href="https://milkyplant.com/products/the-showert">get the showert <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <img src="https://milkyplant.com/cdn/shop/files/mp-logo_svg.svg" alt="milky plant">
+    <div class="flinks"><a href="https://www.instagram.com/themilkyplant/">Instagram</a><a href="https://www.tiktok.com/@themilkyplant">TikTok</a><a href="https://www.facebook.com/themilkyplant">Facebook</a></div>
+    <p class="legal"><a href="#">Unsubscribe</a> &nbsp;|&nbsp; <a href="#">Manage preferences</a></p>
+  </footer>
+
+</div>
+</body>
+</html>

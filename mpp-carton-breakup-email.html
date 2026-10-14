@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>We need to talk</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fredoka:wght@500;600&family=Mulish:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Cocogoose';src:url('https://milkyplant.com/cdn/shop/files/Cocogoose.woff2?v=1706593241') format('woff2');font-weight:400;font-display:block;unicode-range:U+0000-002F,U+003A-10FFFF}
+@font-face{font-family:'Cocogoose';src:url('https://milkyplant.com/cdn/shop/files/COCOGOOSE-DemiBold.woff2?v=1706593241') format('woff2');font-weight:600;font-display:block;unicode-range:U+0000-002F,U+003A-10FFFF}
+:root{--blue:#155398;--cream:#F6EAE2;--red:#F24635;--ink:#1A1B1E;--pen:#22346B;--display:'Cocogoose','Fredoka',system-ui,sans-serif;--hand:'Caveat','Comic Sans MS',cursive;--body:'Mulish','Helvetica Neue',Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#E9E4DF;font-family:var(--body);color:var(--ink);-webkit-font-smoothing:antialiased}
+.email{width:600px;margin:0 auto;overflow:hidden;background:#F6EAE2}
+img{display:block;border:0;max-width:none}
+a{text-decoration:none;color:inherit}
+.d{font-family:var(--display);font-weight:600;text-transform:lowercase;letter-spacing:-.01em}
+.btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--display);font-weight:600;font-size:17px;text-transform:lowercase;border-radius:999px;padding:20px 44px}
+.btn svg{width:18px;height:18px}
+.btn-blue{background:var(--blue);color:var(--cream);box-shadow:0 14px 30px rgba(21,83,152,.36),inset 0 1px 0 rgba(255,255,255,.25)}
+.btn-red{background:var(--red);color:#fff;box-shadow:0 16px 34px rgba(242,70,53,.4),inset 0 1px 0 rgba(255,255,255,.3)}
+.center{text-align:center}
+
+/* 1. THE LETTER */
+.s1{position:relative;padding:34px 0 0;background:linear-gradient(180deg,rgba(232,213,196,0) 70%,#E8D5C4 100%),radial-gradient(120% 70% at 50% 28%,#F8E9DB 0%,#EEDCCB 55%,#E8D5C4 100%)}
+.s1 .logo{width:124px;margin:0 auto}
+.s1 h1{margin-top:26px;text-align:center;color:var(--blue);font-size:50px;line-height:1}
+.s1 .kick{margin-top:10px;text-align:center;font-size:15px;font-weight:700;color:#8A6F5C;letter-spacing:.01em}
+.s1 .carton{width:600px;height:640px;object-fit:cover;object-position:center 8%;margin-top:-30px;-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 70%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 70%,transparent 100%)}
+.letter{position:relative;width:480px;margin:-250px auto 0;padding:46px 44px 34px;transform:rotate(-2.2deg);border-radius:6px;
+  background:repeating-linear-gradient(180deg,transparent 0 33px,rgba(21,83,152,.11) 33px 34px),#FFFDF8;background-position:0 30px;
+  box-shadow:0 2px 0 rgba(0,0,0,.03),0 30px 60px rgba(90,60,40,.22),0 8px 18px rgba(90,60,40,.12)}
+.letter:before{content:'';position:absolute;top:-14px;left:50%;width:120px;height:32px;margin-left:-60px;transform:rotate(3deg);background:rgba(238,211,255,.75);box-shadow:0 2px 6px rgba(0,0,0,.06)}
+.letter p{font-family:var(--hand);font-weight:500;font-size:24px;line-height:34px;color:var(--pen)}
+.letter p+p{margin-top:0}
+.letter .gap{height:17px}
+.letter .sig{margin-top:12px;font-weight:700;font-size:27px}
+.letter s{text-decoration-thickness:2px}
+.s1 .cta{padding:44px 0 0}
+.s1 .under{margin-top:14px;text-align:center;font-size:13px;font-weight:700;color:#8A6F5C}
+
+/* soft blend into lilac */
+.blend{height:150px;background:linear-gradient(180deg,#E8D5C4 0%,#EEDBDB 45%,#F1DEF2 100%)}
+.s1{padding-bottom:0}
+
+/* 2. THE SETTLEMENT */
+.s2{position:relative;padding:0 36px 20px;background:#F1DEF2;margin-top:-60px}
+.s2 h2{text-align:center;color:var(--blue);font-size:38px;line-height:1.05;position:relative}
+.s2 .sub{text-align:center;margin-top:8px;font-size:15px;font-weight:600;color:#6B5A80;position:relative}
+.stage{position:relative;height:330px;margin-top:6px}
+.stage .glow{position:absolute;left:50%;top:40px;width:340px;height:280px;margin-left:-170px;border-radius:50%;background:radial-gradient(closest-side,#FFFFFF 0%,rgba(255,255,255,.7) 45%,rgba(255,255,255,0) 100%);filter:blur(6px)}
+.stage .mpp{position:absolute;left:50%;top:-2px;width:330px;margin-left:-165px;filter:drop-shadow(0 26px 26px rgba(80,50,110,.28))}
+.sticker{position:absolute;left:372px;top:62px;width:102px;height:102px;border-radius:50%;background:var(--red);color:#fff;transform:rotate(10deg);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 12px 26px rgba(242,70,53,.35)}
+.sticker b{font-family:var(--display);font-weight:600;font-size:28px;line-height:1}
+.sticker s{font-size:12px;font-weight:700;opacity:.85;margin-top:4px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:-34px;position:relative}
+.col{border-radius:24px;padding:22px 20px 20px}
+.col h3{font-family:var(--display);font-weight:600;font-size:17px;text-transform:lowercase;margin-bottom:12px}
+.col li{list-style:none;font-size:14px;line-height:1.35;padding:7px 0 7px 26px;position:relative}
+.col li:before{position:absolute;left:0;top:6px;width:18px;height:18px;border-radius:50%;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.them{background:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.65);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);color:#7A7380}
+.them h3{color:#7A7380}
+.them li:before{content:'×';background:rgba(122,115,128,.15);color:#7A7380}
+.you{background:#fff;box-shadow:0 22px 44px rgba(21,83,152,.16);color:#2a2b30}
+.you h3{color:var(--blue)}
+.you li:before{content:'✓';background:#CDE8E3;color:#00664F}
+.s2 .cta{text-align:center;margin-top:34px}
+
+/* 3. P.S. */
+.s3{position:relative;padding:56px 40px 64px;background:linear-gradient(180deg,#F1DEF2 0%,#F4E4EC 45%,#F6EAE2 100%);text-align:center}
+.note{position:relative;width:400px;margin:0 auto;padding:30px 32px 28px;background:#CDE8E3;transform:rotate(1.8deg);box-shadow:0 22px 40px rgba(0,80,60,.16),0 4px 10px rgba(0,80,60,.08);border-radius:3px 3px 18px 3px;text-align:left}
+.note:after{content:'';position:absolute;right:0;bottom:0;width:34px;height:34px;background:linear-gradient(135deg,#B5D8D1 50%,#F3E3EA 50%);border-radius:0 0 18px 0}
+.note p{font-family:var(--hand);font-weight:500;font-size:24px;line-height:32px;color:var(--pen)}
+.note b{font-weight:700}
+.note .aside{font-size:21px;color:#4C6A84;margin-top:10px}
+.s3 .cta{margin-top:40px}
+.s3 .fine{margin-top:14px;font-size:13px;font-weight:700;color:#7a7b80}
+</style>
+</head>
+<body>
+<div class="email">
+
+  <!-- 1. THE LETTER -->
+  <section class="s1">
+    <img class="logo" src="https://cdn.shopify.com/s/files/1/0558/2114/0134/files/MilkyPlant-Logo_horizontal_Wheat_1_3.png?v=1707741777" alt="milky plant">
+    <h1 class="d">we need to talk.</h1>
+    <p class="kick">A letter from your oat milk carton</p>
+    <img class="carton" src="https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261007_091900_6c4fadfd-0148-427e-b6e1-7eaf4df607d2.png" alt="A sad, crumpled oat milk carton under a spotlight">
+    <div class="letter">
+      <p>Dear you,</p>
+      <div class="gap"></div>
+      <p>I've seen the way you look at that machine.</p>
+      <div class="gap"></div>
+      <p>Fresh milk in 3 minutes. Hot or cold. Oat, almond, cashew, whatever you fancy. It even cleans itself. I just sit in the fridge, going off.</p>
+      <div class="gap"></div>
+      <p>And the money. You pay about £2.10 for me. It makes a litre of oat milk for 42p.</p>
+      <div class="gap"></div>
+      <p>I'm not angry. I'm just <s>hurt</s> recyclable.</p>
+      <p class="sig">Your carton x</p>
+    </div>
+    <div class="cta center"><a class="btn btn-blue" href="https://milkyplant.com/products/milky-plant-plus%E2%84%A2">break up with cartons <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    <p class="under">Milky Plant Plus, now £199</p>
+  </section>
+
+  <div class="blend"></div>
+
+  <!-- 2. THE SETTLEMENT -->
+  <section class="s2">
+    <h2 class="d">the settlement</h2>
+    <p class="sub">Splitting things up. Fairly. Mostly.</p>
+    <div class="stage">
+      <div class="glow"></div>
+      <img class="mpp" src="https://milkyplant.com/cdn/shop/files/FRONT.png?width=900" alt="Milky Plant Plus">
+      <div class="sticker"><b>£199</b><s>£399</s></div>
+    </div>
+    <div class="split">
+      <div class="col them">
+        <h3>the carton keeps</h3>
+        <ul>
+          <li>The fridge door</li>
+          <li>£2.10 a litre</li>
+          <li>A long list of ingredients</li>
+          <li>Its spot in the recycling</li>
+        </ul>
+      </div>
+      <div class="col you">
+        <h3>you keep</h3>
+        <ul>
+          <li>Fresh milk in 3 minutes</li>
+          <li>42p a litre of oat milk</li>
+          <li>Any nut, grain or seed</li>
+          <li>A machine that cleans itself</li>
+        </ul>
+      </div>
+    </div>
+    <div class="cta"><a class="btn btn-blue" href="https://milkyplant.com/products/milky-plant-plus%E2%84%A2">keep the good stuff <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  </section>
+
+  <!-- 3. P.S. -->
+  <section class="s3">
+    <div class="note">
+      <p><b>P.S.</b> You get 30 days to try it. If it doesn't work out, send it back for a full refund.</p>
+      <p class="aside">(I'll be here. On the shelf. Waiting.)</p>
+    </div>
+    <div class="cta"><a class="btn btn-red" href="https://milkyplant.com/products/milky-plant-plus%E2%84%A2">try it for 30 days <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    <p class="fine">Free delivery to the UK, EU, US and Canada</p>
+  </section>
+
+</div>
+</body>
+</html>

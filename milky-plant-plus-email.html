@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Milky Plant Plus, fresh plant milk in 3 minutes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Mulish:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Cocogoose';src:url('https://milkyplant.com/cdn/shop/files/Cocogoose.woff2?v=1706593241') format('woff2');font-weight:400;font-display:block;unicode-range:U+0000-002F,U+003A-10FFFF}
+@font-face{font-family:'Cocogoose';src:url('https://milkyplant.com/cdn/shop/files/COCOGOOSE-DemiBold.woff2?v=1706593241') format('woff2');font-weight:600;font-display:block;unicode-range:U+0000-002F,U+003A-10FFFF}
+@font-face{font-family:'Cocogoose';src:url('https://milkyplant.com/cdn/shop/files/Cocogoose-Light.woff?v=1706593241') format('woff');font-weight:300;font-display:block;unicode-range:U+0000-002F,U+003A-10FFFF}
+
+:root{
+  --blue:#155398; --blue-deep:#0F3F75; --cream:#F6EAE2; --red:#F24635; --ink:#1A1B1E;
+  --mint:#CDE8E3; --lilac:#EED3FF; --blush:#F9C9C8; --pale:#DDE7F2; --green:#00664F; --grey:#DAD8D8;
+  --display:'Cocogoose','Fredoka','Quicksand',system-ui,sans-serif;
+  --body:'Mulish','Helvetica Neue',Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#E9E4DF;font-family:var(--body);color:var(--ink);-webkit-font-smoothing:antialiased}
+.email{width:600px;margin:0 auto;background:var(--cream);overflow:hidden}
+img{display:block;border:0}
+a{color:inherit;text-decoration:none}
+.d{font-family:var(--display);text-transform:lowercase;letter-spacing:-0.01em}
+
+/* HERO */
+.hero{position:relative;width:600px;height:894px;background:#16559F}
+.hero .bg{position:absolute;inset:0;width:600px;height:894px}
+.hero .logo{position:absolute;top:30px;left:225px;width:150px;height:auto}
+.hero h1{position:absolute;top:80px;left:0;width:600px;text-align:center;color:var(--cream);font-weight:600;font-size:50px;line-height:1.02}
+.sticker{position:absolute;left:424px;top:236px;width:108px;height:108px;border-radius:50%;background:var(--red);color:var(--cream);transform:rotate(9deg);display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(10,30,70,.28)}
+.sticker span{font-family:var(--display);font-weight:600;font-size:21px;line-height:1;text-transform:lowercase}
+.sticker small{font-family:var(--body);font-weight:800;font-size:10px;margin-top:6px;opacity:.95}
+.hero .price{position:absolute;top:732px;left:0;width:600px;text-align:center;color:var(--cream)}
+.hero .price b{font-family:var(--display);font-weight:600;font-size:40px;vertical-align:middle}
+.hero .price s{font-family:var(--display);font-weight:400;font-size:20px;opacity:.6;margin-left:10px;vertical-align:middle}
+.btn{display:inline-block;font-family:var(--display);font-weight:600;font-size:16px;text-transform:lowercase;border-radius:999px;padding:18px 40px;letter-spacing:.005em}
+.hero .cta{position:absolute;top:798px;left:0;width:600px;text-align:center}
+.btn-cream{background:var(--cream);color:var(--blue)}
+.btn-blue{background:var(--blue);color:var(--cream)}
+
+/* INTRO */
+.intro{padding:64px 56px 56px;text-align:center}
+.intro h2{color:var(--blue);font-weight:600;font-size:32px;line-height:1.08}
+.intro p{margin:20px auto 0;max-width:430px;font-size:17px;line-height:1.6;color:#3a3b40}
+
+/* INGREDIENT GRID */
+.grid{padding:0 32px 18px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tile{border-radius:28px;overflow:hidden;position:relative;height:262px}
+.tile img{width:100%;height:100%;object-fit:cover;object-position:center 70%}
+.tile .lbl{position:absolute;left:0;right:0;top:26px;text-align:center;font-family:var(--display);font-weight:600;font-size:26px;color:var(--blue);text-transform:lowercase}
+.more{padding:14px 56px 64px;text-align:center;font-size:15px;line-height:1.6;color:#55565c}
+.more b{color:var(--blue);font-weight:800}
+
+/* HOW IT WORKS */
+.how{background:var(--blue);color:var(--cream);padding:64px 40px 60px;text-align:center}
+.how h2{font-weight:600;font-size:34px;line-height:1.08}
+.how .lede{margin-top:12px;font-size:16px;opacity:.82}
+.steps{display:flex;justify-content:space-between;margin-top:40px}
+.step{width:160px}
+.circle{position:relative;width:148px;height:148px;margin:0 auto;border-radius:50%;overflow:hidden;background:var(--lilac);box-shadow:0 0 0 6px rgba(246,234,226,.14)}
+.circle img{position:absolute;width:247px;left:-49px;top:-71px;max-width:none}
+.num{width:30px;height:30px;border-radius:50%;background:var(--cream);color:var(--blue);font-family:var(--display);font-weight:600;font-size:14px;line-height:30px;margin:-16px auto 0;position:relative}
+.step h3{font-family:var(--display);font-weight:600;font-size:17px;text-transform:lowercase;margin-top:14px;line-height:1.2}
+.step p{font-size:13.5px;line-height:1.5;margin-top:6px;opacity:.8}
+.clean{margin:44px auto 0;display:inline-flex;align-items:center;gap:14px;background:rgba(246,234,226,.1);border:1px solid rgba(246,234,226,.25);border-radius:999px;padding:12px 24px 12px 14px;font-size:14px;text-align:left}
+.clean i{flex:none;width:34px;height:34px;border-radius:50%;background:var(--mint);display:flex;align-items:center;justify-content:center}
+
+/* MATHS */
+.maths{padding:68px 48px 64px}
+.maths h2{color:var(--blue);font-weight:600;font-size:34px;line-height:1.08;text-align:center}
+.maths .lede{text-align:center;margin-top:12px;font-size:16px;color:#55565c}
+.rows{margin-top:36px}
+.row{display:grid;grid-template-columns:96px 1fr;align-items:center;column-gap:16px;padding:16px 0;border-top:1px solid rgba(21,83,152,.14)}
+.row:last-child{border-bottom:1px solid rgba(21,83,152,.14)}
+.row .name{font-family:var(--display);font-weight:600;font-size:20px;color:var(--blue);text-transform:lowercase}
+.bars{display:flex;flex-direction:column;gap:7px}
+.bar{height:26px;border-radius:999px;display:flex;align-items:center;justify-content:space-between;padding:0 12px;font-size:12.5px;font-weight:700;white-space:nowrap}
+.bar.store{background:var(--grey);color:#55565c}
+.bar.mp{background:var(--blue);color:var(--cream)}
+.bar.mp b{font-weight:800}
+.note{margin-top:16px;font-size:11.5px;line-height:1.5;color:#7a7b80;text-align:center}
+
+/* REVIEW */
+.review{position:relative}
+.review .photo{width:600px;height:640px;object-fit:cover;object-position:center 35%}
+.quote{position:relative;margin:-150px 32px 0;background:var(--cream);border-radius:28px;padding:36px 40px 34px;text-align:center;box-shadow:0 18px 40px rgba(20,40,80,.14)}
+.stars{color:var(--red);font-size:18px;letter-spacing:4px}
+.quote p{font-family:var(--display);font-weight:400;color:var(--blue);font-size:23px;line-height:1.28;margin-top:14px;text-transform:none;letter-spacing:-.005em}
+.quote cite{display:block;margin-top:16px;font-style:normal;font-size:14px;font-weight:700;color:#55565c}
+.minis{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:16px 32px 64px}
+.mini{background:#fff;border-radius:22px;padding:22px 22px 20px}
+.mini p{font-size:14.5px;line-height:1.5;color:#2f3035}
+.mini cite{display:block;margin-top:10px;font-style:normal;font-size:12.5px;font-weight:800;color:var(--blue)}
+
+/* PLANET */
+.planet{background:var(--green);color:var(--cream);padding:60px 52px;display:grid;grid-template-columns:1fr 150px;gap:28px;align-items:center}
+.planet h2{font-weight:600;font-size:32px;line-height:1.08}
+.planet p{margin-top:14px;font-size:15.5px;line-height:1.6;opacity:.88}
+.trees{width:150px;height:150px;border-radius:50%;background:var(--mint);color:var(--green);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.trees b{font-family:var(--display);font-weight:600;font-size:56px;line-height:1}
+.trees span{font-family:var(--display);font-weight:600;font-size:15px;margin-top:4px;text-transform:lowercase}
+
+/* OFFER */
+.offer{padding:72px 48px 68px;text-align:center}
+.offer .pack{width:330px;margin:-24px auto -18px}
+.offer h2{color:var(--blue);font-weight:600;font-size:40px;line-height:1.04;margin-top:8px}
+.offer .sub{margin:16px auto 0;max-width:420px;font-size:16.5px;line-height:1.6;color:#3a3b40}
+.offer .pr{margin-top:26px;color:var(--blue)}
+.offer .pr b{font-family:var(--display);font-weight:600;font-size:46px;vertical-align:middle}
+.offer .pr s{font-family:var(--display);font-size:22px;opacity:.45;margin-left:10px;vertical-align:middle}
+.offer .cta{margin-top:24px}
+.perks{margin-top:22px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.perks span{font-size:12.5px;font-weight:700;color:var(--blue);background:var(--pale);border-radius:999px;padding:8px 14px}
+
+/* RECIPES */
+.recipes{background:#fff;padding:60px 32px 56px}
+.recipes h2{color:var(--blue);font-weight:600;font-size:30px;line-height:1.1;text-align:center}
+.recipes .lede{text-align:center;margin-top:10px;font-size:15px;color:#55565c}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:30px}
+.card img{width:100%;height:150px;object-fit:cover;border-radius:20px}
+.card h4{font-family:var(--display);font-weight:600;font-size:14.5px;color:var(--blue);text-transform:lowercase;margin-top:12px;line-height:1.25}
+.card p{font-size:12.5px;line-height:1.45;color:#66676c;margin-top:4px}
+.recipes .all{text-align:center;margin-top:30px}
+.link{font-family:var(--display);font-weight:600;font-size:15px;color:var(--blue);text-transform:lowercase;border-bottom:2px solid var(--blue);padding-bottom:3px}
+
+/* FOOTER */
+.foot{background:var(--blue);color:var(--cream);padding:52px 48px 46px;text-align:center}
+.foot .logo{width:140px;margin:0 auto}
+.foot .tag{font-family:var(--display);font-weight:400;font-size:15px;margin-top:14px;opacity:.85;text-transform:lowercase}
+.social{margin-top:26px;display:flex;justify-content:center;gap:12px}
+.social a{width:40px;height:40px;border-radius:50%;border:1.5px solid rgba(246,234,226,.55);display:flex;align-items:center;justify-content:center}
+.social svg{width:18px;height:18px;fill:var(--cream)}
+.flinks{margin-top:26px;font-size:13px;font-weight:700;display:flex;justify-content:center;gap:22px}
+.legal{margin-top:24px;font-size:11.5px;line-height:1.6;opacity:.6}
+.legal a{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="email">
+
+  <!-- HERO -->
+  <section class="hero">
+    <img class="bg" src="https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261007_082614_c85212e7-20d1-46da-9699-284bf19cdd4b.png" alt="Milky Plant Plus on a cream plinth with oats, almonds, cashews and a jug of fresh milk">
+    <img class="logo" src="https://milkyplant.com/cdn/shop/files/mp-logo_svg.svg" alt="milky plant">
+    <h1 class="d">fresh plant milk<br>in 3 minutes</h1>
+    <div class="sticker"><span>half</span><span>price</span><small>save £200</small></div>
+    <div class="price"><b>£199</b><s>£399</s></div>
+    <div class="cta"><a class="btn btn-cream" href="https://milkyplant.com/products/milky-plant-plus%E2%84%A2">shop milky plant plus</a></div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="intro">
+    <h2 class="d">any nut, grain or seed.<br>one tap. creamy milk.</h2>
+    <p>Add your ingredients and water, press the milk icon, and Milky Plant Plus does the rest. Hot or cold. No soaking, no nut bag, no carton to throw away.</p>
+  </section>
+
+  <!-- INGREDIENTS -->
+  <section class="grid">
+    <div class="tile" style="background:#DAE5F1"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261006_165226_500809b1-f467-48a1-bf1c-eb2038e985cf.png" alt="Oat milk"><div class="lbl">oat</div></div>
+    <div class="tile" style="background:#F8C7C3"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261006_165225_fe61af44-bab0-473f-859a-2d14f7d260df.png" alt="Almond milk"><div class="lbl">almond</div></div>
+    <div class="tile" style="background:#E9D5FD"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261006_165227_fcd7067c-fd1c-4fbb-83b3-30d295fa50b2.png" alt="Cashew milk"><div class="lbl">cashew</div></div>
+    <div class="tile" style="background:#CCE8E0"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261006_165227_db2e6390-a5cb-46e3-8ad8-d3948937b9cf.png" alt="Pistachio milk"><div class="lbl">pistachio</div></div>
+  </section>
+  <p class="more">Plus soy, coconut, hazelnut, macadamia, rice, hemp, tiger nut <b>and plenty more.</b></p>
+
+  <!-- HOW IT WORKS -->
+  <section class="how">
+    <h2 class="d">three steps. that's it.</h2>
+    <p class="lede">From jar to jug before the kettle boils.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="circle"><img src="https://cdn.shopify.com/s/files/1/0558/2114/0134/files/Add_ingredients_to_machine.png?v=1730478487&width=600" alt=""></div>
+        <div class="num">1</div>
+        <h3>add your ingredients</h3>
+        <p>A scoop of nuts, oats or seeds.</p>
+      </div>
+      <div class="step">
+        <div class="circle"><img src="https://cdn.shopify.com/s/files/1/0558/2114/0134/files/Add_water.png?v=1730478487&width=600" alt=""></div>
+        <div class="num">2</div>
+        <h3>pour in water</h3>
+        <p>Fill the tank with clean water.</p>
+      </div>
+      <div class="step">
+        <div class="circle"><img src="https://cdn.shopify.com/s/files/1/0558/2114/0134/files/Touch_the_screen.png?v=1730478610&width=600" alt=""></div>
+        <div class="num">3</div>
+        <h3>press the milk icon</h3>
+        <p>Up to a litre, strained for you.</p>
+      </div>
+    </div>
+    <div class="clean">
+      <i><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00664F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3 4 6 7 6 10.5A6 6 0 0 1 6 13.5C6 10 9 7 12 3z"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5"/></svg></i>
+      <span>Done? Add water, press the cleaning icon. It cleans itself.</span>
+    </div>
+  </section>
+
+  <!-- MATHS -->
+  <section class="maths">
+    <h2 class="d">a litre of oat milk<br>for 42p</h2>
+    <p class="lede">What a litre costs you, homemade vs the supermarket.</p>
+    <div class="rows">
+      <div class="row">
+        <div class="name">oat</div>
+        <div class="bars">
+          <div class="bar store" style="width:100%"><span>Store bought</span><span>£2.10</span></div>
+          <div class="bar mp" style="width:36%"><span>You</span><b>£0.42</b></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="name">almond</div>
+        <div class="bars">
+          <div class="bar store" style="width:100%"><span>Store bought</span><span>£2.30</span></div>
+          <div class="bar mp" style="width:40%"><span>You</span><b>£0.60</b></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="name">cashew</div>
+        <div class="bars">
+          <div class="bar store" style="width:100%"><span>Store bought</span><span>£2.50</span></div>
+          <div class="bar mp" style="width:46%"><span>You</span><b>£0.80</b></div>
+        </div>
+      </div>
+    </div>
+    <p class="note">Based on raw ingredient prices vs typical supermarket plant milk. Most owners save 30% to 80% over time, depending on what they make.</p>
+  </section>
+
+  <!-- REVIEW -->
+  <section class="review">
+    <img class="photo" src="https://milkyplant.com/cdn/shop/products/5a271214-d7a9-47d9-b3f5-edfb36c1d55f.jpg?v=1768736115&width=1200" alt="Fresh plant milk poured over a bowl of granola and berries">
+    <div class="quote">
+      <div class="stars">★★★★★</div>
+      <p>“The milk tastes amazing and it’s so easy to use the machine. We can make a variety for each person in the family.”</p>
+      <cite>Samantha P.</cite>
+    </div>
+  </section>
+  <section class="minis">
+    <div class="mini"><p>“I didn’t expect this machine to work so perfectly. The blending compartment is now made with glass.”</p><cite>Laila Z.</cite></div>
+    <div class="mini"><p>“The Milky Plant Plus is on a different level.”</p><cite>Thomas K.</cite></div>
+  </section>
+
+  <!-- PLANET -->
+  <section class="planet">
+    <div>
+      <h2 class="d">no cartons.<br>no waste.</h2>
+      <p>No single-use plastic, low energy, and nothing heading for the bin. For every order, we plant 5 trees and give 1% back to the planet.</p>
+    </div>
+    <div class="trees"><b>5</b><span>trees planted</span><span style="font-weight:400;font-size:12px;margin-top:2px;font-family:var(--body);text-transform:none">with every order</span></div>
+  </section>
+
+  <!-- OFFER -->
+  <section class="offer">
+    <img class="pack" src="https://milkyplant.com/cdn/shop/files/FRONT.png?width=600" alt="Milky Plant Plus">
+    <h2 class="d">try it for 30 days</h2>
+    <p class="sub">Love it, or send it back for a full refund. Half price while this offer lasts.</p>
+    <div class="pr"><b>£199</b><s>£399</s></div>
+    <div class="cta"><a class="btn btn-blue" href="https://milkyplant.com/products/milky-plant-plus%E2%84%A2">get yours for £199</a></div>
+    <div class="perks"><span>Free shipping UK, EU, US &amp; CA</span><span>30-day money back</span><span>Hot &amp; cold milk</span></div>
+  </section>
+
+  <!-- RECIPES -->
+  <section class="recipes">
+    <h2 class="d">what to make first</h2>
+    <p class="lede">Three favourites from the Milky Plant kitchen.</p>
+    <div class="cards">
+      <a class="card" href="https://milkyplant.com/blogs/recipes/green-glow-spinach-oat-milk"><img src="https://milkyplant.com/cdn/shop/articles/Green_Glow_Spinach_Oat_Milk_4_76450539-128a-4b83-a91e-374ae0acd693.jpg?v=1776935084&width=600" alt=""><h4>green glow spinach oat milk</h4><p>Oat, banana and spinach.</p></a>
+      <a class="card" href="https://milkyplant.com/blogs/recipes/cashew-strawberries-milk"><img src="https://milkyplant.com/cdn/shop/articles/cashew_trawberry_milk_4_d81ca2d4-b2b6-47b4-a24e-abe3dee15c03.jpg?v=1774340857&width=600" alt=""><h4>cashew strawberry milk</h4><p>Naturally sweet, naturally pink.</p></a>
+      <a class="card" href="https://milkyplant.com/blogs/recipes/almond-strawberry-energy-balls"><img src="https://milkyplant.com/cdn/shop/articles/energy_balls_8_024ca6dc-33ac-4181-8ab1-9d99fed2b7c8.jpg?v=1774340915&width=600" alt=""><h4>almond strawberry energy balls</h4><p>Made with your leftover pulp.</p></a>
+    </div>
+    <div class="all"><a class="link" href="https://milkyplant.com/blogs/recipes">see all recipes</a></div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="foot">
+    <img class="logo" src="https://milkyplant.com/cdn/shop/files/mp-logo_svg.svg" alt="milky plant">
+    <p class="tag">a better way to live, milk and hydrate</p>
+    <div class="social">
+      <a href="https://www.instagram.com/themilkyplant/" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 7.2A4.8 4.8 0 1 0 12 16.8 4.8 4.8 0 0 0 12 7.2zm0 7.9a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2zM17 6a1.1 1.1 0 1 1 0 2.2A1.1 1.1 0 0 1 17 6zM12 2.5c-2.6 0-2.9 0-3.9.1-3.5.2-5.4 2.1-5.6 5.6-.1 1-.1 1.3-.1 3.8s0 2.9.1 3.9c.2 3.5 2.1 5.4 5.6 5.6 1 .1 1.3.1 3.9.1s2.9 0 3.9-.1c3.5-.2 5.4-2.1 5.6-5.6.1-1 .1-1.3.1-3.9s0-2.8-.1-3.8c-.2-3.5-2.1-5.4-5.6-5.6-1-.1-1.3-.1-3.9-.1zm0 1.7c2.5 0 2.8 0 3.8.1 2.5.1 3.7 1.3 3.8 3.8.1 1 .1 1.3.1 3.8s0 2.8-.1 3.8c-.1 2.5-1.3 3.7-3.8 3.8-1 .1-1.3.1-3.8.1s-2.8 0-3.8-.1c-2.5-.1-3.7-1.3-3.8-3.8-.1-1-.1-1.3-.1-3.8s0-2.8.1-3.8C4.4 5.6 5.6 4.4 8.2 4.3c1-.1 1.3-.1 3.8-.1z"/></svg></a>
+      <a href="https://www.tiktok.com/@themilkyplant" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 2.5h-3.3v12.9a2.8 2.8 0 1 1-2-2.7V9.3a6.1 6.1 0 1 0 5.3 6.1V8.9a7.6 7.6 0 0 0 4.4 1.4V7a4.4 4.4 0 0 1-4.4-4.5z"/></svg></a>
+      <a href="https://www.facebook.com/themilkyplant" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21.5v-8h2.7l.4-3.2h-3.1V8.3c0-.9.3-1.5 1.6-1.5h1.6V4a22 22 0 0 0-2.4-.1c-2.4 0-4 1.4-4 4.1v2.3H7.6v3.2h2.7v8z"/></svg></a>
+      <a href="https://www.youtube.com/@milkyplant" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8zM10 15V9l5.2 3z"/></svg></a>
+    </div>
+    <div class="flinks"><a href="https://milkyplant.com/collections/all">Shop</a><a href="https://milkyplant.com/blogs/recipes">Recipes</a><a href="https://milkyplant.com/pages/about">About</a><a href="https://milkyplant.com/pages/contact">Contact</a></div>
+    <p class="legal">You’re getting this email because you signed up at milkyplant.com.<br><a href="#">Unsubscribe</a> &nbsp;|&nbsp; <a href="#">Manage preferences</a><br>Milky Plant, registered in the UK and EU. Organisation ID 18567779</p>
+  </footer>
+
+</div>
+</body>
+</html>
