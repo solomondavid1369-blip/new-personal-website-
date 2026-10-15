@@ -1,0 +1,39 @@
+name: Render emails
+
+# Turns emails-src/*.html into full-length images in public/emails/.
+# Runs here because the emails need the Milky Plant CDNs for fonts and photos.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "emails-src/**"
+      - "scripts/render-emails.mjs"
+      - ".github/workflows/render-emails.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: node scripts/render-emails.mjs
+      - name: Commit rendered emails
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/emails content/email-images.ts
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Render email images"
+            git push
+          fi

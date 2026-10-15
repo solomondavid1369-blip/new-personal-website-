@@ -1,14 +1,12 @@
 import HeroSequence from "@/components/HeroSequence";
 import Nav from "@/components/Nav";
 import Year from "@/components/Year";
+import EmailShowcase from "@/components/sections/EmailShowcase";
 import PortraitZone from "@/components/sections/PortraitZone";
+import SelectedWork from "@/components/sections/SelectedWork";
 
-// F to H get built in Phases 4 and 6.
-const darkZone = [
-  { id: "work", label: "Selected work", heading: "Recent work." },
-  { id: "emails", label: "Email design", heading: "Emails people actually scroll." },
-  { id: "contact", label: "Contact", heading: "Ready to grow" },
-];
+// H gets built in Phase 6.
+const darkZone = [{ id: "contact", label: "Contact", heading: "Ready to grow" }];
 
 export default function Home() {
   return (
@@ -20,6 +18,8 @@ export default function Home() {
         </HeroSequence>
 
         <div className="bg-bg">
+          <SelectedWork />
+          <EmailShowcase />
           {darkZone.map((s) => (
             <section
               key={s.id}

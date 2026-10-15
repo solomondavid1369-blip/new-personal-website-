@@ -113,15 +113,6 @@ export const emails: EmailItem[] = [
     period: "Q4 2026",
   },
   {
-    slug: "watery-postcard",
-    title: "The Watery pre-order postcard",
-    brand: "Milky Plant",
-    description: "Pre-order email styled as a postcard.",
-    image: "/emails/watery-postcard.jpg",
-    imageAlt: "Milky Plant Watery pre-order email styled as a postcard",
-    period: "Q4 2026",
-  },
-  {
     slug: "mpp-hero",
     title: "Milky Plant Plus hero",
     brand: "Milky Plant",
@@ -131,15 +122,16 @@ export const emails: EmailItem[] = [
     period: "Q4 2026",
   },
   {
-    slug: "newsletter",
-    title: "Monthly newsletter",
+    slug: "oat-milk-season",
+    title: "It's oat milk season",
     brand: "Milky Plant",
-    description: "All three products in one email.",
-    image: "/emails/newsletter.jpg",
-    imageAlt: "Milky Plant monthly newsletter email",
+    description: "[One line on what it was for.]",
+    image: "/emails/oat-milk-season.jpg",
+    imageAlt: "Milky Plant email, it's oat milk season",
     period: "Q4 2026",
   },
-  // [Add any others.]
+  // [Add when their images are ready: The Watery pre-order postcard, Monthly newsletter.]
+  // Each email image is rendered from emails-src/<slug>.html by scripts/render-emails.mjs.
 ];
 
 export const clients = ["Milky Plant", "Crusspair", "[add more]"];
