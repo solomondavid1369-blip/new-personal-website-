@@ -69,6 +69,7 @@ export const work: WorkItem[] = [
     year: 2026,
     image: "/work/mp-french.jpg",
     imageAlt: "Milky Plant French Shopify store",
+    url: "https://milkyplant.com/fr",
   },
   // [More sites from the 32-site sprint get added here as they ship.]
 ];
