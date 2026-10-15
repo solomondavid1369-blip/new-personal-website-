@@ -111,3 +111,24 @@
     letter-spacing: 0;
   }
 }
+
+/* Readability gradient over the hero canvas: left side on desktop, bottom on mobile */
+.hero-scrim {
+  background: linear-gradient(
+    to top,
+    rgba(11, 10, 12, 0.92) 0%,
+    rgba(11, 10, 12, 0.6) 30%,
+    rgba(11, 10, 12, 0) 55%
+  );
+}
+
+@media (min-width: 768px) {
+  .hero-scrim {
+    background: linear-gradient(
+      to right,
+      rgba(11, 10, 12, 0.88) 0%,
+      rgba(11, 10, 12, 0.55) 30%,
+      rgba(11, 10, 12, 0) 55%
+    );
+  }
+}

@@ -139,15 +139,6 @@ export const emails: EmailItem[] = [
     imageAlt: "Milky Plant monthly newsletter email",
     period: "Q4 2026",
   },
-  {
-    slug: "halloween-teaser",
-    title: "Halloween / Green Friday teaser",
-    brand: "Milky Plant",
-    description: "[One line on what it was for.]",
-    image: "/emails/halloween-teaser.jpg",
-    imageAlt: "Milky Plant Halloween and Green Friday teaser email",
-    period: "Q4 2026",
-  },
   // [Add any others.]
 ];
 
