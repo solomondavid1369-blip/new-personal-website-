@@ -51,10 +51,10 @@ export default function Nav() {
         <div className="relative z-10 flex items-center gap-2">
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 rounded-full bg-text py-1 pr-1 pl-4 text-sm font-semibold text-bg"
+            className="group inline-flex items-center gap-2 rounded-full bg-text py-1 pr-1 pl-4 text-sm font-semibold text-bg transition-transform duration-300 hover:-translate-y-0.5"
           >
             Get in touch
-            <ArrowCircle />
+            <ArrowCircle className="transition-transform duration-300 group-hover:rotate-45" />
           </a>
           <button
             ref={toggleRef}

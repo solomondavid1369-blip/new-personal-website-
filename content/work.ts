@@ -47,18 +47,7 @@ export const work: WorkItem[] = [
     year: 2026,
     image: "/work/isaac-fala.jpg",
     imageAlt: "Isaac Fala personal website homepage",
-    url: "[link]",
-  },
-  {
-    slug: "crusspair",
-    title: "Crusspair",
-    description:
-      "Launch landing page for a Canadian sneaker startup, plus Klaviyo setup and launch sequence.",
-    tags: ["Website", "Emails"],
-    year: 2026,
-    image: "/work/crusspair.jpg",
-    imageAlt: "Crusspair sneaker launch landing page",
-    url: "[link]",
+    url: "https://solomondavid1369-blip.github.io/Fala.isaac/",
   },
   {
     slug: "mp-advertorial",
@@ -143,7 +132,7 @@ export const emails: EmailItem[] = [
   // Each email image is rendered from emails-src/<slug>.html by scripts/render-emails.mjs.
 ];
 
-export const clients = ["Milky Plant", "Crusspair", "[add more]"];
+export const clients = ["Milky Plant", "[add more]"];
 
 export const contact = {
   email: "solomonethics@gmail.com",

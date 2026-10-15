@@ -1,4 +1,5 @@
 import HeroSequence from "@/components/HeroSequence";
+import Motion from "@/components/Motion";
 import Nav from "@/components/Nav";
 import Year from "@/components/Year";
 import EmailShowcase from "@/components/sections/EmailShowcase";
@@ -11,6 +12,7 @@ const darkZone = [{ id: "contact", label: "Contact", heading: "Ready to grow" }]
 export default function Home() {
   return (
     <>
+      <Motion />
       <Nav />
       <main>
         <HeroSequence>

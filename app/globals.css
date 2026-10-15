@@ -140,3 +140,33 @@
   background-size: 160px 160px;
   opacity: 0.04;
 }
+
+/* Reveal text waits for the motion script. If it never runs, show it anyway after 2.5s. */
+html.motion [data-reveal] {
+  visibility: hidden;
+  animation: reveal-fallback 0s 2.5s forwards;
+}
+
+@keyframes reveal-fallback {
+  to {
+    visibility: visible;
+  }
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}

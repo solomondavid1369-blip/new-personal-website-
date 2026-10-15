@@ -37,6 +37,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en-GB"
       className={`${jakarta.variable} ${instrument.variable} ${jetbrains.variable} antialiased`}
     >
+      <head>
+        {/* Hide reveal text until the motion script splits it, so there is no flash. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("motion")`,
+          }}
+        />
+      </head>
       <body className="min-h-dvh">{children}</body>
     </html>
   );
