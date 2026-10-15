@@ -10,6 +10,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 const MOBILE_QUERY = "(max-width: 767px)";
 const MAX_DPR = 2;
+// On very wide screens, stop enlarging the frame past this width (CSS px)
+// and let the black background fill the rest.
+const MAX_IMAGE_WIDTH = 1600;
+// How far the frame's edges fade into black when it no longer fills the screen.
+const EDGE_FADE = 0.18;
 
 // Where David sits in the desktop frames (fraction of frame width), and where
 // we want him on screen so the left side stays clear for text.
@@ -61,13 +66,17 @@ export default function HeroSequence({ children, debug = false }: Props) {
 
       const W = canvas.width;
       const H = canvas.height;
+      const dpr = W / Math.max(1, stage.clientWidth);
       const iw = hit.image.naturalWidth;
       const ih = hit.image.naturalHeight;
-      const scale = Math.max(W / iw, H / ih);
+      const cover = Math.max(W / iw, H / ih);
+      const scale =
+        stage.clientWidth > MAX_IMAGE_WIDTH ? Math.min(cover, (MAX_IMAGE_WIDTH * dpr) / iw) : cover;
       const dw = iw * scale;
       const dh = ih * scale;
       let dx = setName === "desktop" ? W - dw : (W - dw) / 2;
-      const dy = (H - dh) * FOCAL_Y;
+      // Once capped, sit the frame on the bottom edge so his shoulders never float.
+      const dy = dh < H ? H - dh : (H - dh) * FOCAL_Y;
 
       if (setName === "desktop") {
         const subject = dx + dw * DESKTOP_SUBJECT_X;
@@ -78,6 +87,7 @@ export default function HeroSequence({ children, debug = false }: Props) {
       ctx.fillStyle = "#000";
       ctx.fillRect(0, 0, W, H);
       ctx.drawImage(hit.image, dx, dy, dw, dh);
+      fadeEdges(ctx, dx, dy, dw, dh, W, H);
 
       if (debug) {
         setReadout(
@@ -92,6 +102,8 @@ export default function HeroSequence({ children, debug = false }: Props) {
       const dpr = Math.min(window.devicePixelRatio || 1, MAX_DPR);
       canvas.width = Math.round(stage.clientWidth * dpr);
       canvas.height = Math.round(stage.clientHeight * dpr);
+      // Resizing the canvas resets its context state, so set smoothing every time.
+      ctx.imageSmoothingEnabled = true;
       ctx.imageSmoothingQuality = "high";
       draw(true);
     };
@@ -165,6 +177,7 @@ export default function HeroSequence({ children, debug = false }: Props) {
 
       <div ref={stageRef} className="absolute inset-x-0 top-0 h-lvh overflow-hidden">
         <canvas ref={canvasRef} className="block h-full w-full" aria-hidden="true" />
+        <div className="hero-grain pointer-events-none absolute inset-0" />
         <div className="hero-scrim pointer-events-none absolute inset-0" />
       </div>
 
@@ -177,4 +190,30 @@ export default function HeroSequence({ children, debug = false }: Props) {
       )}
     </div>
   );
+}
+
+/** Blend any frame edge that sits inside the canvas into the black background. */
+function fadeEdges(
+  ctx: CanvasRenderingContext2D,
+  dx: number,
+  dy: number,
+  dw: number,
+  dh: number,
+  W: number,
+  H: number,
+) {
+  const edges: [number, number, number, number, boolean][] = [
+    // x0, y0, x1, y1 of the gradient, and whether that edge is inside the canvas
+    [dx, 0, dx + dw * EDGE_FADE, 0, dx > 0.5],
+    [dx + dw, 0, dx + dw - dw * EDGE_FADE, 0, dx + dw < W - 0.5],
+    [0, dy, 0, dy + dh * EDGE_FADE, dy > 0.5],
+  ];
+  for (const [x0, y0, x1, y1, inside] of edges) {
+    if (!inside) continue;
+    const g = ctx.createLinearGradient(x0, y0, x1, y1);
+    g.addColorStop(0, "rgba(0,0,0,1)");
+    g.addColorStop(1, "rgba(0,0,0,0)");
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, W, H);
+  }
 }

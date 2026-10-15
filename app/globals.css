@@ -133,3 +133,10 @@
     );
   }
 }
+
+/* Subtle film grain over the hero canvas. Hides softness in the upscaled frames. */
+.hero-grain {
+  background-image: url("/hero/grain.png");
+  background-size: 160px 160px;
+  opacity: 0.04;
+}

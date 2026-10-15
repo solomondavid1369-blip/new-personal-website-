@@ -22,7 +22,8 @@ DESKTOP_WIDTH=${DESKTOP_WIDTH:-1600}
 MOBILE_WIDTH=${MOBILE_WIDTH:-720}
 DESKTOP_FRAMES=${DESKTOP_FRAMES:-110}
 MOBILE_FRAMES=${MOBILE_FRAMES:-72}
-QUALITY=${QUALITY:-70}
+DESKTOP_QUALITY=${DESKTOP_QUALITY:-88}
+MOBILE_QUALITY=${MOBILE_QUALITY:-70}
 MOBILE_CROP_X=${MOBILE_CROP_X:-638}
 
 DESKTOP_BUDGET_KB=5000
@@ -32,9 +33,9 @@ MOBILE_BUDGET_KB=2500
 
 probe() { ffprobe -v error -select_streams v:0 -show_entries "$1" -of csv=p=0 "$2"; }
 
-# extract <src> <out_dir> <target_frames> <max_width> [crop_filter]
+# extract <src> <out_dir> <target_frames> <max_width> <quality> [crop_filter]
 extract() {
-  local src=$1 out=$2 frames=$3 max_w=$4 crop=${5:-}
+  local src=$1 out=$2 frames=$3 max_w=$4 quality=$5 crop=${6:-}
   local duration src_w fps chain
   duration=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$src")
   src_w=$(probe stream=width "$src")
@@ -47,18 +48,18 @@ extract() {
   chain="$chain,scale=$w:-2:flags=lanczos"
 
   rm -rf "$out" && mkdir -p "$out"
-  ffmpeg -v error -i "$src" -vf "$chain" -c:v libwebp -quality "$QUALITY" \
+  ffmpeg -v error -i "$src" -vf "$chain" -c:v libwebp -quality "$quality" \
     -compression_level 6 -preset photo "$out/%04d.webp"
 }
 
-extract "$DESKTOP_SRC" "$DESKTOP_DIR" "$DESKTOP_FRAMES" "$DESKTOP_WIDTH"
+extract "$DESKTOP_SRC" "$DESKTOP_DIR" "$DESKTOP_FRAMES" "$DESKTOP_WIDTH" "$DESKTOP_QUALITY"
 
 if [[ -f $MOBILE_SRC ]]; then
-  extract "$MOBILE_SRC" "$MOBILE_DIR" "$MOBILE_FRAMES" "$MOBILE_WIDTH"
+  extract "$MOBILE_SRC" "$MOBILE_DIR" "$MOBILE_FRAMES" "$MOBILE_WIDTH" "$MOBILE_QUALITY"
 else
   src_h=$(probe stream=height "$DESKTOP_SRC")
   crop_w=$(( src_h * 9 / 16 / 2 * 2 ))
-  extract "$DESKTOP_SRC" "$MOBILE_DIR" "$MOBILE_FRAMES" "$MOBILE_WIDTH" \
+  extract "$DESKTOP_SRC" "$MOBILE_DIR" "$MOBILE_FRAMES" "$MOBILE_WIDTH" "$MOBILE_QUALITY" \
     "crop=$crop_w:$src_h:$MOBILE_CROP_X:0"
 fi
 
@@ -82,7 +83,7 @@ report() {
   kb=$(du -sk "$dir" | cut -f1)
   count=$(find "$dir" -name '*.webp' | wc -l | tr -d ' ')
   local status="OK"
-  (( kb > budget )) && status="OVER BUDGET (${budget}KB): lower QUALITY or the frame count"
+  (( kb > budget )) && status="OVER BUDGET (${budget}KB): lower the quality or the frame count"
   printf '%-8s %3s frames  %5s KB  %s\n' "$(basename "$dir")" "$count" "$kb" "$status"
 }
 echo
