@@ -92,11 +92,11 @@ function WorkCard({ item }: { item: Item }) {
           title={item.title}
           hasImage={item.hasImage}
           sizes="(min-width: 768px) 50vw, 100vw"
-          className="aspect-[4/3] transition-transform duration-500 group-hover:scale-[0.985]"
+          className="aspect-[4/5] transition-transform duration-500 group-hover:scale-[0.985]"
         />
         <div className="absolute top-3 right-3 flex gap-1.5">
           {item.tags.map((t) => (
-            <span key={t} className="glass rounded-full px-3 py-1 text-xs font-medium">
+            <span key={t} className="rounded-full border border-line bg-bg/90 px-3 py-1 text-xs font-medium backdrop-blur">
               {t}
             </span>
           ))}

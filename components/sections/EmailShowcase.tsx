@@ -1,14 +1,10 @@
 import EmailPhones from "@/components/EmailPhones";
-import { emailImageSizes } from "@/content/email-images";
 import { emails } from "@/content/work";
-import { publicFileExists } from "@/lib/public-file";
+import { publicImageSize } from "@/lib/public-file";
 
 // G. Email showcase. Each email scrolls inside a phone frame as you scroll the page.
 export default function EmailShowcase() {
-  const items = emails.map((e) => {
-    const size = emailImageSizes[e.slug];
-    return { ...e, size: size && publicFileExists(e.image) ? size : null };
-  });
+  const items = emails.map((e) => ({ ...e, size: publicImageSize(e.image) }));
 
   return (
     <section id="emails" aria-labelledby="emails-title" className="overflow-hidden py-24 md:py-32">
