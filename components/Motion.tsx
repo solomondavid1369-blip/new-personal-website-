@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 // Page-wide scroll motion, driven by data attributes in the markup:
 //   data-reveal          lines slide up with a slight fade when they enter
 //   data-steps           children appear one by one as the block scrolls past
-//   data-parallax="80"   drifts up by that many px across its section
+//   data-parallax="80"   rises that many px into place as its section scrolls in
 //   data-swap            crossfades between its children as the section scrolls
 // Nothing runs for visitors who prefer reduced motion.
 export default function Motion() {
@@ -67,17 +67,23 @@ export default function Motion() {
           });
         });
 
+        // Start lower and rise into place, so a card never drifts above its
+        // resting spot and over the text above it.
         gsap.utils.toArray<HTMLElement>("[data-parallax]").forEach((el) => {
-          gsap.to(el, {
-            y: -Number(el.dataset.parallax || 60),
-            ease: "none",
-            scrollTrigger: {
-              trigger: el.closest("section") ?? el,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: 0.5,
+          gsap.fromTo(
+            el,
+            { y: Number(el.dataset.parallax || 60) },
+            {
+              y: 0,
+              ease: "none",
+              scrollTrigger: {
+                trigger: el.closest("section") ?? el,
+                start: "top bottom",
+                end: "bottom bottom",
+                scrub: 0.5,
+              },
             },
-          });
+          );
         });
 
         gsap.utils.toArray<HTMLElement>("[data-swap]").forEach((el) => {

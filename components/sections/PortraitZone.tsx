@@ -112,8 +112,8 @@ export default function PortraitZone() {
       </section>
 
       {/* E. Web × Email word-mark. The portrait fades to the page colour here. */}
-      <section aria-label="Web and email" className="relative flex min-h-[120svh] flex-col justify-center overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-bg/70 via-50% to-bg" />
+      <section aria-label="Web and email" className="relative flex min-h-svh flex-col justify-center overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-bg/70 via-40% to-bg to-85%" />
         <div className="relative px-4 text-center md:px-12">
           <div aria-hidden="true" className="flex flex-col items-center text-wordmark font-extrabold tracking-[-0.04em] uppercase">
             <span>
