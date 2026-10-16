@@ -1,8 +1,9 @@
 import WorkThumb from "@/components/WorkThumb";
-import { clients, emails, work } from "@/content/work";
+import { emails, experience, work } from "@/content/work";
 
-// Sections A to E. They scroll over the pinned hero sequence.
-// Desktop: text in the clear left half. Mobile: text at the bottom over the gradient.
+// Sections A to E. They scroll over the pinned hero scenes.
+// Desktop: text in the left half over the gradient. Sections after the hero are
+// sized to their content so there are no empty screens.
 
 const services = ["Websites", "Shopify", "Email design", "Klaviyo flows"];
 const steps = ["Brief and research", "Design in Figma", "Build and test", "Launch and hand over"];
@@ -11,14 +12,17 @@ const site = work.find((w) => w.slug === "chidinma-obi")!;
 const shopify = work.find((w) => w.tags.includes("Shopify"))!;
 const email = emails[0];
 
-const sectionBase =
-  "relative flex min-h-svh flex-col justify-end px-4 pb-16 md:justify-center md:px-12 md:pb-0";
+const sectionBase = "relative flex flex-col px-4 py-20 md:px-12 md:py-28";
 
 export default function PortraitZone() {
   return (
     <>
       {/* A. Hero */}
-      <section id="top" aria-labelledby="hero-title" className={`${sectionBase} pt-28`}>
+      <section
+        id="top"
+        aria-labelledby="hero-title"
+        className="relative flex min-h-svh flex-col justify-end px-4 pt-28 pb-12 md:justify-center md:px-12 md:pb-0"
+      >
         <div className="flex max-w-xl flex-col gap-6 lg:max-w-2xl">
           <span className="dot-label">Hey, I&apos;m David</span>
           <h1 id="hero-title" data-reveal className="text-hero font-extrabold">
@@ -78,16 +82,27 @@ export default function PortraitZone() {
         </div>
       </section>
 
-      {/* C. Trusted by */}
-      <section aria-label="Clients" data-scene="2" className="relative flex min-h-[60svh] flex-col justify-end px-4 pb-16 md:justify-center md:px-12 md:pb-0">
-        <div className="glass flex w-full max-w-xl flex-wrap items-center gap-x-8 gap-y-3 rounded-[20px] px-6 py-5">
-          <span className="font-mono text-xs tracking-[0.12em] text-text-dim uppercase">Work for</span>
-          {clients.map((c) => (
-            <span key={c} className="text-lg font-bold tracking-tight">
-              {c}
-            </span>
-          ))}
+      {/* C. Experience */}
+      <section id="experience" aria-labelledby="experience-title" data-scene="2" className={sectionBase}>
+        <div className="mb-8 flex flex-col gap-4 md:mb-10">
+          <span className="dot-label">Experience</span>
+          <h2 id="experience-title" data-reveal className="text-section">
+            Recent <span className="accent-word">roles</span>.
+          </h2>
         </div>
+        <ol className="grid gap-4 md:grid-cols-3 md:gap-5">
+          {experience.map((x) => (
+            <li
+              key={x.role}
+              className="flex flex-col gap-3 rounded-[20px] border border-line bg-bg/80 p-6 backdrop-blur-md md:p-7"
+            >
+              <span className="font-mono text-xs tracking-[0.12em] text-accent uppercase">{x.dates}</span>
+              <h3 className="text-xl leading-snug font-bold md:text-2xl">{x.role}</h3>
+              {x.company && <p className="font-semibold">{x.company}</p>}
+              <p className="text-text-dim">{x.description}</p>
+            </li>
+          ))}
+        </ol>
       </section>
 
       {/* D. Process */}
@@ -112,7 +127,11 @@ export default function PortraitZone() {
       </section>
 
       {/* E. Web × Email word-mark. The portrait fades to the page colour here. */}
-      <section aria-label="Web and email" data-scene="3" className="relative flex min-h-svh flex-col justify-center overflow-hidden">
+      <section
+        aria-label="Web and email"
+        data-scene="3"
+        className="relative flex min-h-[70svh] flex-col justify-center overflow-hidden py-16"
+      >
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-bg/70 via-40% to-bg to-85%" />
         <div className="relative px-4 text-center md:px-12">
           <div aria-hidden="true" className="flex flex-col items-center text-wordmark font-extrabold tracking-[-0.04em] uppercase">
