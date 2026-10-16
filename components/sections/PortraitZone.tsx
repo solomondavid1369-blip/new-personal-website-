@@ -58,7 +58,7 @@ export default function PortraitZone() {
       </section>
 
       {/* B. Intro */}
-      <section aria-label="Intro" className={sectionBase}>
+      <section aria-label="Intro" data-scene="1" className={sectionBase}>
         <div className="flex max-w-xl flex-col gap-8">
           <p data-reveal className="text-2xl leading-snug font-semibold md:text-4xl md:leading-tight">
             I&apos;m a web developer and email designer based in Nigeria, working with brands in the
@@ -79,7 +79,7 @@ export default function PortraitZone() {
       </section>
 
       {/* C. Trusted by */}
-      <section aria-label="Clients" className="relative flex min-h-[60svh] flex-col justify-end px-4 pb-16 md:justify-center md:px-12 md:pb-0">
+      <section aria-label="Clients" data-scene="2" className="relative flex min-h-[60svh] flex-col justify-end px-4 pb-16 md:justify-center md:px-12 md:pb-0">
         <div className="glass flex w-full max-w-xl flex-wrap items-center gap-x-8 gap-y-3 rounded-[20px] px-6 py-5">
           <span className="font-mono text-xs tracking-[0.12em] text-text-dim uppercase">Work for</span>
           {clients.map((c) => (
@@ -112,7 +112,7 @@ export default function PortraitZone() {
       </section>
 
       {/* E. Web × Email word-mark. The portrait fades to the page colour here. */}
-      <section aria-label="Web and email" className="relative flex min-h-svh flex-col justify-center overflow-hidden">
+      <section aria-label="Web and email" data-scene="3" className="relative flex min-h-svh flex-col justify-center overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-bg/70 via-40% to-bg to-85%" />
         <div className="relative px-4 text-center md:px-12">
           <div aria-hidden="true" className="flex flex-col items-center text-wordmark font-extrabold tracking-[-0.04em] uppercase">
