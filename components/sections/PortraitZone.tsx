@@ -25,10 +25,10 @@ export default function PortraitZone() {
       >
         <div className="flex max-w-xl flex-col gap-6 lg:max-w-2xl">
           <span className="dot-label">Hey, I&apos;m David</span>
-          <h1 id="hero-title" data-reveal className="text-hero font-extrabold">
+          <h1 id="hero-title" className="hero-rise text-hero font-extrabold">
             Websites and emails that <span className="accent-word">sell</span>.
           </h1>
-          <p data-reveal className="max-w-md text-text-dim">
+          <p className="hero-rise max-w-md text-text-dim [animation-delay:120ms]">
             I design and build websites, Shopify stores and Klaviyo emails for brands that want
             more from every visitor.
           </p>
@@ -110,8 +110,7 @@ export default function PortraitZone() {
         <div className="flex max-w-xl flex-col gap-6">
           <span className="dot-label">How I work</span>
           <h2 id="process-title" data-reveal className="text-section">
-            From brief to <span className="accent-word">live</span> in [two weeks / your real
-            timeframe].
+            From brief to <span className="accent-word">live</span> in two weeks.
           </h2>
           <ol data-steps className="flex flex-col items-start gap-3">
             {steps.map((s, i) => (

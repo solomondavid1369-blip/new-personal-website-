@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
+import MotionProvider from "./MotionProvider";
 import Thumb from "./Thumb";
 import { workFilters, type WorkItem, type WorkTag } from "@/content/work";
 
@@ -34,7 +35,7 @@ export default function WorkGrid({ items }: { items: Item[] }) {
   }, [filter]);
 
   return (
-    <>
+    <MotionProvider>
       <div role="group" aria-label="Filter work" className="mb-8 flex flex-wrap gap-2">
         {workFilters.map((f) => {
           const active = f === filter;
@@ -49,7 +50,7 @@ export default function WorkGrid({ items }: { items: Item[] }) {
               }`}
             >
               {active && (
-                <motion.span
+                <m.span
                   layoutId="active-chip"
                   className="absolute inset-0 rounded-full bg-accent"
                   transition={{ type: "spring", stiffness: 500, damping: 40 }}
@@ -61,10 +62,10 @@ export default function WorkGrid({ items }: { items: Item[] }) {
         })}
       </div>
 
-      <motion.ul layout className="grid gap-x-6 gap-y-12 md:grid-cols-2">
+      <m.ul layout className="grid gap-x-6 gap-y-12 md:grid-cols-2">
         <AnimatePresence mode="popLayout" initial={false}>
           {shown.map((item) => (
-            <motion.li
+            <m.li
               key={item.slug}
               layout
               initial={{ opacity: 0, scale: 0.97 }}
@@ -73,11 +74,11 @@ export default function WorkGrid({ items }: { items: Item[] }) {
               transition={{ duration: 0.35, ease: [0.215, 0.61, 0.355, 1] }}
             >
               <WorkCard item={item} />
-            </motion.li>
+            </m.li>
           ))}
         </AnimatePresence>
-      </motion.ul>
-    </>
+      </m.ul>
+    </MotionProvider>
   );
 }
 

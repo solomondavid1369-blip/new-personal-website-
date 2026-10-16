@@ -22,19 +22,23 @@ export default function Motion() {
       return;
     }
 
-    // Smooth wheel scrolling, kept in step with ScrollTrigger. Touch scrolling stays native.
-    const lenis = new Lenis({ autoRaf: false, anchors: true });
-    lenis.on("scroll", ScrollTrigger.update);
-    const tick = (time: number) => lenis.raf(time * 1000);
-    gsap.ticker.add(tick);
-    gsap.ticker.lagSmoothing(0);
-
     const splits: SplitText[] = [];
     let ctx: gsap.Context | undefined;
+    let lenis: Lenis | undefined;
     let cancelled = false;
+    const tick = (time: number) => lenis?.raf(time * 1000);
 
-    document.fonts.ready.then(() => {
+    // Set everything up once the page has loaded and the browser is idle, so
+    // none of it competes with the first paint.
+    const setup = () => {
       if (cancelled) return;
+
+      // Smooth wheel scrolling, kept in step with ScrollTrigger. Touch scrolling stays native.
+      lenis = new Lenis({ autoRaf: false, anchors: true });
+      lenis.on("scroll", ScrollTrigger.update);
+      gsap.ticker.add(tick);
+      gsap.ticker.lagSmoothing(0);
+
       ctx = gsap.context(() => {
         gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
           splits.push(
@@ -42,6 +46,8 @@ export default function Motion() {
               type: "lines",
               mask: "lines",
               autoSplit: true,
+              // The text stays as plain text for screen readers; no aria-label on <p>.
+              aria: "none",
               onSplit(self) {
                 gsap.set(el, { visibility: "visible" });
                 return gsap.from(self.lines, {
@@ -106,14 +112,21 @@ export default function Motion() {
         });
       });
       ScrollTrigger.refresh();
-    });
+    };
+
+    const idle = (fn: () => void) =>
+      "requestIdleCallback" in window ? requestIdleCallback(fn, { timeout: 2000 }) : setTimeout(fn, 300);
+    const start = () => document.fonts.ready.then(() => idle(setup));
+    if (document.readyState === "complete") start();
+    else window.addEventListener("load", start, { once: true });
 
     return () => {
       cancelled = true;
+      window.removeEventListener("load", start);
       ctx?.revert();
       splits.forEach((s) => s.revert());
       gsap.ticker.remove(tick);
-      lenis.destroy();
+      lenis?.destroy();
     };
   }, []);
 

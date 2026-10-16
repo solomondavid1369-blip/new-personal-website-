@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
+import MotionProvider from "./MotionProvider";
 import ArrowCircle from "./ArrowCircle";
 
 const links = [
@@ -33,6 +34,7 @@ export default function Nav() {
   }, [open]);
 
   return (
+    <MotionProvider>
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="pointer-events-none absolute inset-0 h-28 bg-gradient-to-b from-bg/80 to-transparent" />
       <div className="relative z-10 flex items-center justify-between gap-3 px-4 py-4 md:px-12">
@@ -79,7 +81,7 @@ export default function Nav() {
 
       <AnimatePresence>
         {open && (
-          <motion.div
+          <m.div
             id="mobile-menu"
             className="fixed inset-0 z-0 flex flex-col justify-between bg-bg px-4 pt-24 pb-10 md:hidden"
             initial={{ opacity: 0 }}
@@ -90,7 +92,7 @@ export default function Nav() {
             <nav aria-label="Mobile">
               <ul className="flex flex-col gap-2">
                 {links.map((l, i) => (
-                  <motion.li
+                  <m.li
                     key={l.href}
                     initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -104,14 +106,15 @@ export default function Nav() {
                       <span className="font-mono text-xs text-accent">0{i + 1}</span>
                       {l.label}
                     </a>
-                  </motion.li>
+                  </m.li>
                 ))}
               </ul>
             </nav>
             <p className="text-sm text-text-dim">Websites and emails that sell.</p>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </header>
+    </MotionProvider>
   );
 }

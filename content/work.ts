@@ -42,7 +42,7 @@ export const work: WorkItem[] = [
   {
     slug: "isaac-fala",
     title: "Isaac Fala",
-    description: "Personal site for [his role].",
+    description: "Personal site for an AI innovation and ERP automation leader.",
     tags: ["Website"],
     year: 2026,
     image: "/work/isaac-fala.jpg",
@@ -106,7 +106,7 @@ export const emails: EmailItem[] = [
     slug: "mpp-hero",
     title: "Milky Plant Plus hero",
     brand: "Milky Plant",
-    description: "Product launch email.",
+    description: "Launch email for the Milky Plant Plus machine.",
     image: "/emails/mpp-hero.jpg",
     imageAlt: "Milky Plant Plus product launch email",
     period: "Q4 2026",
@@ -146,12 +146,12 @@ export const experience: ExperienceItem[] = [
     company: "Milky Plant",
     description:
       "UK wellness brand on Shopify. Email design and Klaviyo flows, store builds, French localisation.",
-    dates: "[March 2026] to now",
+    dates: "March 2026 to now",
   },
   {
     role: "Freelance Web Developer & Email Marketer",
     description: "Websites, Shopify stores and Klaviyo email for clients in Nigeria, the UK and Canada.",
-    dates: "[2025] to now",
+    dates: "2025 to now",
   },
   {
     role: "Email & Landing Page",
