@@ -1,5 +1,7 @@
 import WorkThumb from "@/components/WorkThumb";
-import { emails, experience, work } from "@/content/work";
+import Proof from "./Proof";
+import { emails } from "@/content/emails";
+import { experience, work } from "@/content/work";
 
 // Sections A to E. They scroll over the pinned hero scenes.
 // Desktop: text in the left half over the gradient. Sections after the hero are
@@ -63,7 +65,12 @@ export default function PortraitZone() {
 
       {/* B. Intro */}
       <section aria-label="Intro" data-scene="1" className={sectionBase}>
-        <div className="flex max-w-xl flex-col gap-8">
+        {/* Extra contrast for the intro over the close-up portrait. */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/20 md:via-black/45 md:to-transparent"
+        />
+        <div className="relative flex max-w-xl flex-col gap-8">
           <p data-reveal className="text-2xl leading-snug font-semibold md:text-4xl md:leading-tight">
             I&apos;m a web developer and email designer based in Nigeria, working with brands in the
             UK, Canada and at home.
@@ -104,6 +111,9 @@ export default function PortraitZone() {
           ))}
         </ol>
       </section>
+
+      {/* Proof: testimonial and stats */}
+      <Proof />
 
       {/* D. Process */}
       <section id="process" aria-labelledby="process-title" className={sectionBase}>

@@ -6,6 +6,9 @@ import Contact from "@/components/sections/Contact";
 import EmailShowcase from "@/components/sections/EmailShowcase";
 import PortraitZone from "@/components/sections/PortraitZone";
 import SelectedWork from "@/components/sections/SelectedWork";
+import { reportPlaceholders } from "@/lib/placeholder-report";
+
+reportPlaceholders();
 
 export default function Home() {
   return (

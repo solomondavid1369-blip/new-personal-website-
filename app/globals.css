@@ -185,35 +185,33 @@ html.lenis body {
   }
 }
 
-/* Email wall: columns drift up (or down, when reversed) in an endless loop. */
-.email-wall {
-  mask-image: linear-gradient(to bottom, transparent 0, #000 12%, #000 88%, transparent 100%);
+/* Email frames: on devices with a real hover, the email scrolls top to bottom
+   inside its frame while the pointer is over it, then glides back. */
+.email-frame {
+  --frame-h: 460px;
+  height: var(--frame-h);
 }
 
-.email-track {
-  animation: email-drift linear infinite;
-  will-change: transform;
-}
-
-.email-col:hover .email-track,
-.email-col:focus-within .email-track {
-  animation-play-state: paused;
-}
-
-@keyframes email-drift {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-50%);
+@media (min-width: 768px) {
+  .email-frame {
+    --frame-h: 500px;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .email-track {
-    animation: none;
+@media (min-width: 1024px) {
+  .email-frame {
+    --frame-h: 560px;
   }
-  .email-wall {
-    overflow-y: auto;
+}
+
+.email-frame img {
+  transition: transform 0.9s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .email-frame:hover img {
+    transform: translateY(calc(-100% + var(--frame-h)));
+    transition-duration: var(--scroll-duration, 6s);
+    transition-timing-function: linear;
   }
 }

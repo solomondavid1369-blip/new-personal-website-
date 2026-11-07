@@ -1,4 +1,5 @@
-/** The live address, used for absolute links in metadata, the sitemap and share images. */
-export const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
-  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-  : "https://new-personal-website-rho-one.vercel.app";
+/**
+ * The site's address, used for the canonical link, Open Graph tags, the
+ * sitemap and robots.txt. To move to a custom domain, change this one line.
+ */
+export const SITE_URL = "https://new-personal-website-rho-one.vercel.app";

@@ -4,7 +4,7 @@ import { useRef, useState, type FormEvent } from "react";
 import { contact } from "@/content/work";
 
 const needs = ["Website", "Shopify", "Emails", "All of it"];
-const budgets = ["Under $500", "$500 to $1,500", "$1,500 to $5,000", "$5,000+"];
+const budgets = ["$500 to $1,500", "$1,500 to $5,000", "$5,000+"];
 
 type Status = "idle" | "sending" | "success" | "error";
 

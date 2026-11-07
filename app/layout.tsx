@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import { contact } from "@/content/work";
-import { siteUrl } from "@/lib/site";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 // Variable fonts: one file covers every weight we use.
@@ -28,7 +28,7 @@ const description =
   "I design and build websites, Shopify stores and Klaviyo emails for brands that want more from every visitor.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
   title: "David Solomon | Websites and emails that sell",
   description,
   alternates: { canonical: "/" },
@@ -48,7 +48,7 @@ const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "David Solomon",
-  url: siteUrl,
+  url: SITE_URL,
   jobTitle: "Web developer and email designer",
   email: `mailto:${contact.email}`,
   sameAs: [contact.linkedin],
@@ -62,6 +62,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en-GB"
+      // The inline script below adds a "motion" class before React loads.
+      suppressHydrationWarning
       className={`${jakarta.variable} ${instrument.variable} ${jetbrains.variable} antialiased`}
     >
       <head>

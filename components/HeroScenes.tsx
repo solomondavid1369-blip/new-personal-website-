@@ -54,7 +54,7 @@ export default function HeroScenes({ scenes, alt, eager = true, children }: Prop
         ScrollTrigger.create({ trigger: zone, start: "top bottom+=200%", once: true, onEnter: loadAll });
       }
 
-      gsap.set(layers.slice(1), { autoAlpha: 0 });
+      if (layers.length > 1) gsap.set(layers.slice(1), { autoAlpha: 0 });
 
       // Where each scene starts showing: the zone itself for the first one,
       // its marked section for the rest.

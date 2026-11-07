@@ -1,11 +1,12 @@
-// Renders each email in emails-src/*.html to a full-length JPG in
-// public/emails/ (the 600px .email block at 2x, so 1200px wide).
+// Renders each email in emails-src/**/*.html to a full-length JPG at the same
+// path under public/emails/ (the 600px .email block at 2x, so 1200px wide).
+// emails-src/concepts/nomad.html becomes public/emails/concepts/nomad.jpg.
 //
 //   node scripts/render-emails.mjs
 //
 // Needs open internet: the emails pull fonts and product photos from the
 // Milky Plant CDNs. The "Render emails" GitHub Action runs this for us.
-import { readdir } from "node:fs/promises";
+import { mkdir, readdir } from "node:fs/promises";
 import path from "node:path";
 import { chromium } from "playwright";
 
@@ -18,10 +19,11 @@ const browser = await chromium.launch(
 );
 const page = await browser.newPage({ viewport: { width: 700, height: 1000 }, deviceScaleFactor: 2 });
 
-const files = (await readdir(srcDir)).filter((f) => f.endsWith(".html")).sort();
+const files = (await readdir(srcDir, { recursive: true })).filter((f) => f.endsWith(".html")).sort();
 
 for (const file of files) {
   const slug = file.replace(/\.html$/, "");
+  await mkdir(path.dirname(path.join(outDir, `${slug}.jpg`)), { recursive: true });
   await page.goto(`file://${path.join(srcDir, file)}`, { waitUntil: "networkidle", timeout: 60_000 });
   await page.evaluate(() => document.fonts.ready);
   // Make sure lazy images have arrived before the capture.
