@@ -1,6 +1,6 @@
 // Every email in the "Emails people actually scroll." section.
 // To add one: drop the image in /public/emails (or /public/emails/concepts)
-// and add an entry here. Client emails are listed first, then concepts.
+// and add an entry here. The grid shows them in this order.
 
 export type EmailType = "Launch" | "Sale" | "Welcome" | "Abandoned cart" | "Newsletter";
 export type EmailKind = "Client" | "Concept";
@@ -21,16 +21,25 @@ export type Email = {
 export const emailTypes: EmailType[] = ["Launch", "Sale", "Welcome", "Abandoned cart", "Newsletter"];
 
 export const emails: Email[] = [
-  // Client work
   {
-    slug: "carton-breakup",
+    slug: "showert-hard-water",
     brand: "Milky Plant",
-    title: "Dear carton",
-    description: "Milky Plant Plus email written as a breakup letter to milk cartons.",
-    type: "Launch",
+    title: "Hard water, explained",
+    description: "Education email showing what hard water does to hair and skin, and how ShowerT fixes it.",
+    type: "Newsletter",
     kind: "Client",
-    image: "/emails/carton-breakup.jpg",
-    imageAlt: "Milky Plant Plus email written as a breakup letter to milk cartons",
+    image: "/emails/showert-hard-water.jpg",
+    imageAlt: "Milky Plant ShowerT email explaining hard water",
+  },
+  {
+    slug: "nomad",
+    brand: "Nomad",
+    title: "Your bag is boarding",
+    description: "Luggage sale designed as a boarding pass.",
+    type: "Sale",
+    kind: "Concept",
+    image: "/emails/concepts/nomad.jpg",
+    imageAlt: "Nomad luggage sale email designed as a boarding pass",
   },
   {
     slug: "showert-serum",
@@ -42,18 +51,6 @@ export const emails: Email[] = [
     image: "/emails/showert-serum.jpg",
     imageAlt: "Milky Plant ShowerT email, the £60 serum",
   },
-  {
-    slug: "showert-hard-water",
-    brand: "Milky Plant",
-    title: "Hard water, explained",
-    description: "Education email showing what hard water does to hair and skin, and how ShowerT fixes it.",
-    type: "Newsletter",
-    kind: "Client",
-    image: "/emails/showert-hard-water.jpg",
-    imageAlt: "Milky Plant ShowerT email explaining hard water",
-  },
-
-  // Concepts
   {
     slug: "halcyon",
     brand: "Halcyon",
@@ -105,16 +102,6 @@ export const emails: Email[] = [
     imageAlt: "Kettle and Crumb newsletter, Sunday is for buns",
   },
   {
-    slug: "nomad",
-    brand: "Nomad",
-    title: "Your bag is boarding",
-    description: "Luggage sale designed as a boarding pass.",
-    type: "Sale",
-    kind: "Concept",
-    image: "/emails/concepts/nomad.jpg",
-    imageAlt: "Nomad luggage sale email designed as a boarding pass",
-  },
-  {
     slug: "fizzwell",
     brand: "Fizzwell",
     title: "The 3pm slump never saw it coming",
@@ -153,5 +140,15 @@ export const emails: Email[] = [
     kind: "Concept",
     image: "/emails/concepts/voltage.jpg",
     imageAlt: "Voltage EV charging app onboarding email",
+  },
+  {
+    slug: "carton-breakup",
+    brand: "Milky Plant",
+    title: "Dear carton",
+    description: "Milky Plant Plus email written as a breakup letter to milk cartons.",
+    type: "Launch",
+    kind: "Client",
+    image: "/emails/carton-breakup.jpg",
+    imageAlt: "Milky Plant Plus email written as a breakup letter to milk cartons",
   },
 ];
