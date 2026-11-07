@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VOLTAGE | Low battery? Not anymore.</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{--graphite:#101418;--slate:#1B222A;--blue:#2D6BFF;--green:#00E58F;--white:#F4F7FA;--dim:#8C98A6;--low:#FF5A4E;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#07090B;font-family:'Inter',Arial,sans-serif;color:var(--white)}
+  .email{width:600px;margin:30px auto;background:var(--graphite);overflow:hidden}
+  .s{font-family:'Sora',Arial,sans-serif;font-weight:800;letter-spacing:-1px}
+  section{position:relative;width:600px}
+  .btn{display:inline-block;padding:18px 38px;border-radius:14px;font-family:'Sora',Arial,sans-serif;font-size:20px;font-weight:600;text-decoration:none}
+  .btn-g{background:var(--green);color:var(--graphite)}
+  .btn-b{background:var(--blue);color:var(--white)}
+
+  /* Battery meter, reused in every section */
+  .batt{display:inline-flex;align-items:center;gap:12px;font-family:'Sora',Arial,sans-serif;font-weight:600;font-size:20px}
+  .batt .cell{position:relative;width:120px;height:34px;border:3px solid var(--white);border-radius:8px;padding:3px}
+  .batt .cell::after{content:"";position:absolute;right:-9px;top:9px;width:5px;height:10px;background:var(--white);border-radius:0 3px 3px 0}
+  .batt .fill{height:100%;border-radius:4px}
+
+  .logo{display:flex;align-items:center;gap:8px;font-family:'Sora',Arial,sans-serif;font-weight:800;font-size:22px;letter-spacing:4px}
+
+  /* 1. Hero: 12% */
+  .hero{height:770px;background:url('https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261107_122733_2f601a76-b2fc-4515-9290-351ba77ff957.png') center bottom/cover}
+  .hero::after{content:"";position:absolute;inset:auto 0 0 0;height:220px;background:linear-gradient(180deg,rgba(16,20,24,0),var(--graphite) 85%)}
+  .hero .logo{position:absolute;top:30px;left:40px;z-index:2}
+  .hero .batt{position:absolute;top:26px;right:44px;z-index:2;color:var(--low)}
+  .hero h1{position:absolute;top:110px;left:40px;right:40px;font-size:58px;line-height:1.02;z-index:2}
+  .hero h1 span{color:var(--green)}
+  .hero .cta{position:absolute;left:0;right:0;bottom:44px;text-align:center;z-index:2}
+
+  /* 2. App: 45% */
+  .app{height:780px;background:url('https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261107_122734_e5a15abe-5882-4e12-a97c-384332994ac0.png') center/cover}
+  .app::before{content:"";position:absolute;inset:0 0 auto 0;height:300px;background:linear-gradient(180deg,var(--graphite) 30%,rgba(16,20,24,0))}
+  .app::after{content:"";position:absolute;inset:auto 0 0 0;height:200px;background:linear-gradient(180deg,rgba(16,20,24,0),var(--graphite) 80%)}
+  .app .top{position:absolute;top:36px;left:40px;right:40px;z-index:2}
+  .app h2{font-size:50px;line-height:1.04;margin-top:16px}
+  .app h2 span{color:var(--blue)}
+  .app .cta{position:absolute;left:0;right:0;bottom:44px;text-align:center;z-index:2}
+
+  /* 3. Speed: 80% */
+  .speed{height:700px;background:url('https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261107_122734_0e034453-852c-441b-927e-218dc66ac9d5.png') center/cover}
+  .speed::before{content:"";position:absolute;inset:0 0 auto 0;height:150px;background:linear-gradient(180deg,var(--graphite),rgba(16,20,24,0))}
+  .speed::after{content:"";position:absolute;inset:auto 0 0 0;height:320px;background:linear-gradient(180deg,rgba(16,20,24,0),var(--graphite) 70%)}
+  .speed .copy{position:absolute;left:40px;right:40px;bottom:50px;z-index:2}
+  .speed .big{font-size:110px;line-height:.9;color:var(--green)}
+  .speed p{font-size:24px;margin:10px 0 22px;font-family:'Sora',Arial,sans-serif;font-weight:600}
+
+  /* 4. Offer: 100% */
+  .offer{padding:70px 40px 76px;text-align:center;background:radial-gradient(circle at 50% 38%,rgba(0,229,143,.28) 0%,rgba(0,229,143,0) 55%),var(--graphite)}
+  .bigbatt{position:relative;width:260px;height:120px;margin:0 auto 36px;border:6px solid var(--white);border-radius:22px;padding:8px}
+  .bigbatt::after{content:"";position:absolute;right:-20px;top:34px;width:12px;height:40px;background:var(--white);border-radius:0 6px 6px 0}
+  .bigbatt .fill{height:100%;border-radius:12px;background:var(--green);display:flex;align-items:center;justify-content:center;color:var(--graphite);font-family:'Sora',Arial,sans-serif;font-weight:800;font-size:44px}
+  .offer h2{font-size:46px;line-height:1.04}
+  .offer h2 span{color:var(--green)}
+  .offer p{font-size:20px;color:var(--dim);margin:14px 0 30px}
+</style>
+</head>
+<body>
+<div class="email">
+
+  <section class="hero">
+    <div class="logo"><svg width="20" height="26" viewBox="0 0 20 26"><path d="M12 0L0 15h8l-2 11L20 10h-8l2-10z" fill="#00E58F"/></svg>VOLTAGE</div>
+    <div class="batt">12%<div class="cell"><div class="fill" style="width:12%;background:var(--low)"></div></div></div>
+    <h1 class="s">Low battery?<br><span>Not anymore.</span></h1>
+    <div class="cta"><a class="btn btn-g" href="#">Find a charger</a></div>
+  </section>
+
+  <section class="app">
+    <div class="top">
+      <div class="batt" style="color:#FFC23D">45%<div class="cell"><div class="fill" style="width:45%;background:#FFC23D"></div></div></div>
+      <h2 class="s">Every charger.<br><span>One tap.</span></h2>
+    </div>
+    <div class="cta"><a class="btn btn-b" href="#">Open the app</a></div>
+  </section>
+
+  <section class="speed">
+    <div class="copy">
+      <div class="batt" style="color:var(--green)">80%<div class="cell"><div class="fill" style="width:80%;background:var(--green)"></div></div></div>
+      <div class="big s" style="margin-top:20px">20 min</div>
+      <p>to 80% on fast chargers.</p>
+      <a class="btn btn-g" href="#">Plug in near me</a>
+    </div>
+  </section>
+
+  <section class="offer">
+    <div class="bigbatt"><div class="fill">100%</div></div>
+    <h2 class="s">Your first charge<br><span>is on us.</span></h2>
+    <p>Added to your account automatically.</p>
+    <a class="btn btn-g" href="#">Claim my free charge</a>
+  </section>
+
+</div>
+</body>
+</html>

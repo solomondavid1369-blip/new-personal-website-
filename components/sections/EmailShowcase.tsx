@@ -1,10 +1,14 @@
-import EmailPhones from "@/components/EmailPhones";
+import EmailWall from "@/components/EmailWall";
 import { emails } from "@/content/work";
 import { publicImageSize } from "@/lib/public-file";
 
-// G. Email showcase. Each email scrolls inside a phone frame as you scroll the page.
+// G. Email showcase: a moving wall of every email; tap one to read it in full.
 export default function EmailShowcase() {
-  const items = emails.map((e) => ({ ...e, size: publicImageSize(e.image) }));
+  // Emails whose image has not been rendered yet are left out until it exists.
+  const items = emails.flatMap((e) => {
+    const size = publicImageSize(e.image);
+    return size ? [{ ...e, size }] : [];
+  });
 
   return (
     <section id="emails" aria-labelledby="emails-title" className="overflow-hidden py-16 md:py-24">
@@ -14,7 +18,7 @@ export default function EmailShowcase() {
           Emails people actually <span className="accent-word">scroll</span>.
         </h2>
       </div>
-      <EmailPhones items={items} />
+      <EmailWall items={items} />
     </section>
   );
 }

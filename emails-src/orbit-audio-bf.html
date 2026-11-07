@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orbit Audio | Black Friday launches early</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{--space:#07081A;--signal:#FF4D2E;--silver:#D9DCE3;--violet:#6C5CE7;--dim:#8A8DA6;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#020309;font-family:'Space Grotesk',Arial,sans-serif;color:var(--silver)}
+  .email{width:600px;margin:30px auto;background:var(--space);overflow:hidden}
+  .u{font-family:'Unbounded',Arial,sans-serif;font-weight:800}
+  section{position:relative;width:600px}
+  .btn{display:inline-block;padding:18px 38px;border-radius:999px;font-size:20px;font-weight:600;text-decoration:none}
+  .btn-signal{background:var(--signal);color:#fff}
+  .btn-silver{background:var(--silver);color:var(--space)}
+
+  /* 1. Hero + countdown */
+  .hero{height:780px;background:url('https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261107_121140_3205a92a-bef0-4a45-9a4e-8dfc55edc5a3.png') center bottom/cover}
+  .hero::after{content:"";position:absolute;inset:auto 0 0 0;height:300px;background:linear-gradient(180deg,rgba(7,8,26,0),var(--space) 75%)}
+  .logo{position:absolute;top:32px;left:0;right:0;text-align:center;font-size:18px;letter-spacing:10px;z-index:2}
+  .hero h1{position:absolute;top:92px;left:30px;right:30px;text-align:center;font-size:54px;line-height:1.02;color:#fff;z-index:2}
+  .hero h1 span{color:var(--signal)}
+  .count{position:absolute;left:0;right:0;bottom:130px;display:flex;justify-content:center;gap:14px;z-index:2}
+  .count div{width:120px;padding:14px 0 12px;text-align:center;border:1px solid rgba(217,220,227,.25);border-radius:14px;background:rgba(7,8,26,.55)}
+  .count b{display:block;font-family:'Unbounded',Arial,sans-serif;font-weight:500;font-size:48px;color:#fff;line-height:1}
+  .count span{font-size:14px;letter-spacing:3px;color:var(--dim)}
+  .hero .cta{position:absolute;left:0;right:0;bottom:44px;text-align:center;z-index:2}
+
+  /* 2. Commute */
+  .commute{height:760px;background:url('https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261107_121141_07d4af44-8a5b-43e0-a1d3-6a663a983ab8.png') center/cover}
+  .commute::before{content:"";position:absolute;inset:0 0 auto 0;height:300px;background:linear-gradient(180deg,var(--space) 25%,rgba(7,8,26,0))}
+  .commute::after{content:"";position:absolute;inset:auto 0 0 0;height:240px;background:linear-gradient(180deg,rgba(7,8,26,0),var(--space) 80%)}
+  .commute h2{position:absolute;top:40px;left:40px;right:40px;font-size:44px;line-height:1.08;color:#fff;z-index:2}
+  .commute .bottom{position:absolute;left:40px;right:40px;bottom:44px;z-index:2;display:flex;align-items:flex-end;justify-content:space-between}
+  .commute .db b{display:block;font-family:'Unbounded',Arial,sans-serif;font-size:64px;color:var(--signal);line-height:1}
+  .commute .db span{font-size:20px}
+
+  /* 3. Specs as an orbit */
+  .specs{height:640px;background:radial-gradient(circle at 50% 46%,#1A1338 0%,var(--space) 60%)}
+  .planet{position:absolute;top:150px;left:180px;width:240px;height:240px;border-radius:50%;background:url('https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261107_120809_a3509103-2859-424f-95c3-c5fbfad46aa5.png') center/cover;box-shadow:0 0 70px rgba(255,77,46,.35)}
+  .specs svg{position:absolute;inset:0}
+  .sp{position:absolute;font-size:20px;color:var(--dim)}
+  .sp b{display:block;font-family:'Unbounded',Arial,sans-serif;font-size:40px;color:#fff;line-height:1.05}
+  .specs h2{position:absolute;left:0;right:0;bottom:120px;text-align:center;font-size:26px;color:var(--silver);font-weight:500}
+  .specs .cta{position:absolute;left:0;right:0;bottom:40px;text-align:center}
+
+  /* 4. Launch */
+  .launch{height:780px;background:url('https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261107_120808_86f3c78e-87b9-4547-89e1-c8b50fccd405.png') center bottom/cover}
+  .launch::before{content:"";position:absolute;inset:0 0 auto 0;height:180px;background:linear-gradient(180deg,var(--space),rgba(7,8,26,0))}
+  .launch::after{content:"";position:absolute;inset:auto 0 0 0;height:300px;background:linear-gradient(180deg,rgba(7,8,26,0),var(--space) 80%)}
+  .launch h2{position:absolute;top:70px;left:30px;right:30px;text-align:center;font-size:76px;line-height:.98;color:#fff;z-index:2}
+  .launch h2 small{display:block;font-size:30px;color:var(--signal);margin-top:16px}
+  .launch .cta{position:absolute;left:0;right:0;bottom:46px;text-align:center;z-index:2}
+  .launch .price{font-size:22px;margin-bottom:20px}
+  .launch .price s{color:var(--dim);margin-right:10px}
+  .launch .price b{font-family:'Unbounded',Arial,sans-serif;font-size:34px;color:#fff}
+</style>
+</head>
+<body>
+<div class="email">
+
+  <section class="hero">
+    <div class="logo u">ORBIT</div>
+    <h1 class="u">Black Friday<br><span>launches early.</span></h1>
+    <div class="count">
+      <div><b>03</b><span>DAYS</span></div>
+      <div><b>14</b><span>HRS</span></div>
+      <div><b>22</b><span>MIN</span></div>
+    </div>
+    <div class="cta"><a class="btn btn-signal" href="#">Get early access</a></div>
+  </section>
+
+  <section class="commute">
+    <h2 class="u">In space, no one can hear your commute.</h2>
+    <div class="bottom">
+      <div class="db"><b>-40dB</b><span>of everybody else</span></div>
+      <a class="btn btn-silver" href="#">Meet Orbit One</a>
+    </div>
+  </section>
+
+  <section class="specs">
+    <svg width="600" height="640" viewBox="0 0 600 640" aria-hidden="true">
+      <ellipse cx="300" cy="270" rx="250" ry="110" fill="none" stroke="#6C5CE7" stroke-width="1.5" stroke-dasharray="3 8" transform="rotate(-12 300 270)"/>
+      <circle cx="68" cy="318" r="7" fill="#FF4D2E"/>
+      <circle cx="532" cy="222" r="7" fill="#FF4D2E"/>
+    </svg>
+    <div class="planet"></div>
+    <div class="sp" style="top:340px;left:40px;"><b>60h</b>battery</div>
+    <div class="sp" style="top:96px;right:40px;text-align:right;"><b>245g</b>weightless-ish</div>
+    <div class="sp" style="top:96px;left:40px;"><b>8 mics</b>for calls</div>
+    <h2>Orbit One. Built for long missions.</h2>
+    <div class="cta"><a class="btn btn-signal" href="#">See the specs</a></div>
+  </section>
+
+  <section class="launch">
+    <h2 class="u">Up to 40% off<small>Lift-off Friday, 00:01</small></h2>
+    <div class="cta">
+      <p class="price"><s>£249</s><b>£149</b></p>
+      <a class="btn btn-signal" href="#">Set a launch reminder</a>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

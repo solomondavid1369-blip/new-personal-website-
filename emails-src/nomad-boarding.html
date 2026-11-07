@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NOMAD | Your bag is boarding</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#14213D;--sand:#EDE6DA;--orange:#FF7A00;--sky:#A8C5DA;--grey:#7D8597;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#0B1426;font-family:'IBM Plex Mono',monospace;color:var(--sand)}
+  .email{width:600px;margin:30px auto;background:var(--navy);overflow:hidden}
+  .s{font-family:'Syne',Arial,sans-serif;font-weight:800}
+  section{position:relative;width:600px}
+  .btn{display:inline-block;padding:18px 38px;border-radius:999px;font-family:'Syne',Arial,sans-serif;font-size:20px;font-weight:600;text-decoration:none}
+  .btn-orange{background:var(--orange);color:var(--navy)}
+  .btn-navy{background:var(--navy);color:var(--sand)}
+
+  /* 1. Hero */
+  .hero{height:760px;background:url('https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261107_121554_155f5f77-013e-41a2-92e0-abbdf9b2ef47.png') center bottom/cover}
+  .hero::after{content:"";position:absolute;inset:auto 0 0 0;height:200px;background:linear-gradient(180deg,rgba(20,33,61,0),var(--navy))}
+  .logo{position:absolute;top:30px;left:0;right:0;text-align:center;font-size:22px;letter-spacing:12px;color:var(--navy);z-index:2}
+  .hero h1{position:absolute;top:86px;left:0;right:0;text-align:center;font-size:76px;line-height:.95;color:var(--navy);z-index:2}
+  .hero h1 span{color:var(--orange)}
+  .hero .cta{position:absolute;bottom:44px;left:0;right:0;text-align:center;z-index:2}
+
+  /* 2. Boarding pass */
+  .pass-wrap{padding:30px 34px 70px;background:var(--navy)}
+  .eyebrow{text-align:center;font-size:16px;letter-spacing:4px;color:var(--sky);margin-bottom:22px}
+  .pass{display:flex;background:var(--sand);color:var(--navy);border-radius:18px;position:relative;overflow:hidden}
+  .main{flex:1;min-width:0;padding:26px 22px 24px}
+  .stub{width:136px;padding:26px 20px;border-left:2px dashed #BDB3A3;text-align:center;display:flex;flex-direction:column;justify-content:space-between}
+  .pass::before,.pass::after{content:"";position:absolute;right:122px;width:28px;height:28px;border-radius:50%;background:var(--navy)}
+  .pass::before{top:-14px}.pass::after{bottom:-14px}
+  .route{display:flex;align-items:center;gap:10px;margin:6px 0 20px}
+  .route b{font-family:'Syne',Arial,sans-serif;font-size:26px;line-height:1;white-space:nowrap}
+  .route i{font-style:normal;font-size:20px;color:var(--orange)}
+  .lbl{font-size:13px;color:var(--grey);letter-spacing:2px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 10px}
+  .grid div{font-size:20px;font-weight:600}
+  .off{font-family:'Syne',Arial,sans-serif;font-weight:800;font-size:58px;line-height:.9;color:var(--orange)}
+  .bar{height:70px;background:repeating-linear-gradient(90deg,var(--navy) 0 2px,transparent 2px 5px,var(--navy) 5px 9px,transparent 9px 11px)}
+  .pass-wrap .cta{text-align:center;margin-top:34px}
+
+  /* 3. Packed */
+  .packed{height:680px;background:url('https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261107_121553_a65dbd73-c042-419e-9b1b-8e9769a5aad3.png') center/cover}
+  .packed::before{content:"";position:absolute;inset:0 0 auto 0;height:150px;background:linear-gradient(180deg,var(--navy),rgba(20,33,61,0))}
+  .packed::after{content:"";position:absolute;inset:auto 0 0 0;height:280px;background:linear-gradient(180deg,rgba(20,33,61,0),var(--navy) 85%)}
+  .packed h2{position:absolute;left:40px;right:40px;bottom:50px;font-size:62px;line-height:.98;z-index:2}
+  .packed h2 small{display:block;font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:20px;color:var(--sand);margin-top:14px}
+
+  /* 4. Final call */
+  .final{height:760px;background:url('https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261107_121555_c7b9c10c-05f6-4333-b833-c7399516ddb1.png') center/cover}
+  .final::before{content:"";position:absolute;inset:0 0 auto 0;height:260px;background:linear-gradient(180deg,var(--navy) 20%,rgba(20,33,61,0))}
+  .final::after{content:"";position:absolute;inset:auto 0 0 0;height:240px;background:linear-gradient(180deg,rgba(255,122,0,0),var(--orange) 80%)}
+  .final h2{position:absolute;top:44px;left:0;right:0;text-align:center;font-size:84px;line-height:.92;z-index:2}
+  .final .lbl2{position:absolute;top:226px;left:0;right:0;text-align:center;z-index:2}
+  .final .lbl2 span{display:inline-block;background:var(--orange);color:var(--navy);font-size:20px;font-weight:600;padding:10px 20px;border-radius:999px}
+  .final .cta{position:absolute;bottom:46px;left:0;right:0;text-align:center;z-index:2}
+</style>
+</head>
+<body>
+<div class="email">
+
+  <section class="hero">
+    <div class="logo s">NOMAD</div>
+    <h1 class="s">Your bag is<br><span>boarding.</span></h1>
+    <div class="cta"><a class="btn btn-orange" href="#">Check in now</a></div>
+  </section>
+
+  <section class="pass-wrap">
+    <div class="eyebrow">YOUR BOARDING PASS</div>
+    <div class="pass">
+      <div class="main">
+        <div class="lbl">FROM / TO</div>
+        <div class="route"><b>HERE</b><i>&#9992;</i><b>ANYWHERE</b></div>
+        <div class="grid">
+          <div><span class="lbl">PASSENGER</span><br>You</div>
+          <div><span class="lbl">FLIGHT</span><br>NMD 030</div>
+          <div><span class="lbl">SEAT</span><br>Overhead</div>
+          <div><span class="lbl">BOARDS</span><br>Fri 28 Nov</div>
+        </div>
+      </div>
+      <div class="stub">
+        <div><span class="lbl">FARE</span><div class="off">30%<br>OFF</div></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+    <div class="cta"><a class="btn btn-orange" href="#">Claim your seat</a></div>
+  </section>
+
+  <section class="packed">
+    <h2 class="s">7 days.<br>1 carry-on.<small>Fits every overhead bin we've tried.</small></h2>
+  </section>
+
+  <section class="final">
+    <h2 class="s">Final<br>call.</h2>
+    <div class="lbl2"><span>30% off ends Monday, 23:59</span></div>
+    <div class="cta"><a class="btn btn-navy" href="#">Board now</a></div>
+  </section>
+
+</div>
+</body>
+</html>

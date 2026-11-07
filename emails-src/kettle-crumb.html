@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kettle &amp; Crumb | Sunday is for buns</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{--flour:#F6EFE4;--crust:#8B5A2B;--butter:#F2C14E;--jam:#B23A48;--ink:#2B1D14;--muted:#7A6555;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#E9DFCF;font-family:'Inter',Arial,sans-serif;color:var(--ink)}
+  .email{width:600px;margin:30px auto;background:var(--flour);overflow:hidden}
+  .f{font-family:'Fraunces',Georgia,serif}
+  section{position:relative;width:600px}
+  .btn{display:inline-block;padding:18px 38px;border-radius:999px;font-size:20px;font-weight:600;text-decoration:none}
+  .btn-jam{background:var(--jam);color:var(--flour)}
+  .btn-ink{background:var(--ink);color:var(--butter)}
+
+  /* 1. Hero */
+  .hero{height:760px;background:url('https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261107_121553_07f63479-dd2c-4dce-9185-5c5ea2461d53.png') center bottom/cover}
+  .hero::after{content:"";position:absolute;inset:auto 0 0 0;height:180px;background:linear-gradient(180deg,rgba(246,239,228,0),var(--flour))}
+  .logo{position:absolute;top:30px;left:0;right:0;text-align:center;font-size:22px;font-weight:700;color:var(--crust);z-index:2}
+  .hero h1{position:absolute;top:84px;left:0;right:0;text-align:center;font-size:88px;line-height:.95;font-weight:400;z-index:2}
+  .hero h1 em{color:var(--jam);font-weight:500}
+  .hero .cta{position:absolute;bottom:40px;left:0;right:0;text-align:center;z-index:2}
+
+  /* 2. Recipe card */
+  .recipe{padding:40px 50px 70px;background:linear-gradient(180deg,var(--flour) 0%,#F3E3C8 100%)}
+  .card{background:#FFFDF8;border-radius:6px;padding:34px 36px 38px;transform:rotate(-1.5deg);box-shadow:0 18px 40px rgba(139,90,43,.18);position:relative}
+  .card::before{content:"";position:absolute;top:-14px;left:50%;width:110px;height:28px;margin-left:-55px;background:rgba(242,193,78,.75);transform:rotate(3deg)}
+  .card .no{font-size:16px;color:var(--jam);font-weight:600;letter-spacing:2px}
+  .card h2{font-size:46px;line-height:1;margin:8px 0 18px;font-weight:700}
+  .meta{display:flex;gap:10px;margin-bottom:24px}
+  .meta span{padding:8px 14px;border:1.5px solid var(--crust);border-radius:999px;font-size:16px;color:var(--crust)}
+  .step{display:flex;gap:16px;align-items:baseline;padding:12px 0;border-top:1px dashed #DCC9B0}
+  .step b{font-family:'Fraunces',Georgia,serif;font-size:34px;color:var(--butter);-webkit-text-stroke:1px var(--crust);min-width:28px}
+  .step p{font-size:20px;line-height:1.35}
+  .recipe .cta{text-align:center;margin-top:40px}
+
+  /* 3. The pull */
+  .pull{height:660px;background:url('https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261107_121553_9e959985-f63e-4a7d-9373-b78cea8c86de.png') center/cover}
+  .pull::before{content:"";position:absolute;inset:0 0 auto 0;height:140px;background:linear-gradient(180deg,#F3E3C8,rgba(243,227,200,0))}
+  .pull::after{content:"";position:absolute;inset:auto 0 0 0;height:260px;background:linear-gradient(180deg,rgba(43,29,20,0),rgba(43,29,20,.85))}
+  .pull h2{position:absolute;left:44px;right:44px;bottom:48px;font-size:66px;line-height:.98;color:var(--flour);font-weight:400;z-index:2}
+  .pull h2 em{color:var(--butter)}
+
+  /* 4. The kit */
+  .kit{padding:0 0 64px;text-align:center;background:linear-gradient(180deg,var(--ink) 0%,#4A3121 30%,var(--flour) 100%)}
+  .kit .img{width:440px;height:550px;margin:0 auto;border-radius:220px 220px 16px 16px;background:url('https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261107_121554_639b3eb8-afa0-4a5a-892b-ad3e9efa0496.png') center/cover;box-shadow:0 24px 50px rgba(43,29,20,.35)}
+  .kit h2{font-size:44px;line-height:1.05;margin:40px 0 8px;font-weight:700}
+  .kit p{font-size:20px;color:var(--muted);margin-bottom:26px}
+</style>
+</head>
+<body>
+<div class="email">
+
+  <section class="hero">
+    <div class="logo f">Kettle &amp; Crumb</div>
+    <h1 class="f">Sunday<br>is for <em>buns.</em></h1>
+    <div class="cta"><a class="btn btn-jam" href="#">Bake along</a></div>
+  </section>
+
+  <section class="recipe">
+    <div class="card">
+      <div class="no">RECIPE NO. 12</div>
+      <h2 class="f">Sunday Cinnamon Buns</h2>
+      <div class="meta"><span>45 min</span><span>Serves 9</span><span>Easy</span></div>
+      <div class="step"><b>1</b><p>Mix, knead, then let the dough nap for an hour.</p></div>
+      <div class="step"><b>2</b><p>Roll it flat. Butter, sugar, a lot of cinnamon.</p></div>
+      <div class="step"><b>3</b><p>Roll, slice, bake at 190°C for 22 minutes.</p></div>
+    </div>
+    <div class="cta"><a class="btn btn-ink" href="#">Get the full recipe</a></div>
+  </section>
+
+  <section class="pull">
+    <h2 class="f">The pull<br>is the <em>point.</em></h2>
+  </section>
+
+  <section class="kit">
+    <div class="img"></div>
+    <h2 class="f">Everything in one box.</h2>
+    <p>Flour, cinnamon swirl, sugar and the recipe. £18.</p>
+    <a class="btn btn-jam" href="#">Get the Bun Kit</a>
+  </section>
+
+</div>
+</body>
+</html>

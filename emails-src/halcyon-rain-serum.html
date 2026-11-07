@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Halcyon | Rain Serum</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{--mist:#DCE6EA;--slate:#2E3D47;--sand:#EADBC8;--cream:#F5EFE7;--gold:#C9A24A;--soft:#5D7280;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#C9D3D7;font-family:'DM Sans',Arial,sans-serif;color:var(--slate)}
+  .email{width:600px;margin:30px auto;background:var(--mist);overflow:hidden}
+  .serif{font-family:'Instrument Serif',Georgia,serif;font-weight:400}
+  .btn{display:inline-block;padding:18px 38px;border-radius:999px;font-size:20px;font-weight:500;text-decoration:none}
+  .btn-dark{background:var(--slate);color:var(--cream)}
+  .btn-gold{background:var(--gold);color:var(--slate);font-weight:700}
+  section{position:relative;width:600px}
+
+  /* 1. Hero */
+  .hero{height:750px;background:url('https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261107_121141_f92ecca4-18c0-407b-8f5f-e7476f82a826.png') center/cover}
+  .hero::after{content:"";position:absolute;inset:auto 0 0 0;height:200px;background:linear-gradient(180deg,rgba(220,230,234,0) 0%,var(--mist) 100%)}
+  .logo{position:absolute;top:34px;left:0;right:0;text-align:center;font-size:30px;letter-spacing:.5px;z-index:2}
+  .hero h1{position:absolute;top:110px;left:0;right:0;text-align:center;font-size:84px;line-height:.95;z-index:2}
+  .hero h1 em{color:var(--soft)}
+  .hero .cta{position:absolute;bottom:44px;left:0;right:0;text-align:center;z-index:2}
+  .hero .cta p{font-size:20px;margin-bottom:18px}
+
+  /* 2. Forecast */
+  .forecast{padding:70px 40px 90px;text-align:center;background:linear-gradient(180deg,var(--mist) 0%,var(--mist) 60%,var(--sand) 100%)}
+  .forecast .label{font-size:20px;color:var(--soft)}
+  .forecast .num{font-size:190px;line-height:1;margin:6px 0 2px}
+  .chips{display:flex;justify-content:center;gap:12px;margin-top:30px}
+  .chip{padding:12px 20px;border-radius:999px;background:rgba(255,255,255,.6);font-size:20px}
+  .chip b{color:#B5542F;font-weight:700}
+
+  /* 3. Texture */
+  .texture{height:720px;background:url('https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261107_041949_c3b45ddc-005b-4a2e-92bb-8aa5b913ee27.png') center 20%/cover}
+  .texture::before{content:"";position:absolute;inset:0 0 auto 0;height:120px;background:linear-gradient(180deg,var(--sand) 0%,rgba(234,219,200,0) 100%)}
+  .texture::after{content:"";position:absolute;inset:auto 0 0 0;height:330px;background:linear-gradient(180deg,rgba(234,219,200,0) 0%,var(--sand) 55%)}
+  .texture .copy{position:absolute;left:48px;right:48px;bottom:56px;z-index:2}
+  .texture h2{font-size:64px;line-height:1}
+  .texture p{font-size:20px;margin:14px 0 26px;color:#46555F}
+
+  /* 4. Result */
+  .result{padding:0 0 70px;text-align:center;background:linear-gradient(180deg,var(--sand) 0%,var(--cream) 100%)}
+  .result .photo{position:relative;width:520px;height:520px;margin:0 auto;border-radius:260px 260px 24px 24px;overflow:hidden;background:url('https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261107_041746_6c9cf2bc-e296-4a87-9c10-511c9d1333bc.png') center/cover}
+  .tag{position:absolute;left:24px;bottom:24px;background:var(--cream);padding:12px 20px;border-radius:14px;font-size:20px;text-align:left}
+  .tag span{display:block;font-size:14px;color:var(--soft)}
+  .result h2{font-size:60px;line-height:1;margin:44px 0 26px}
+</style>
+</head>
+<body>
+<div class="email">
+
+  <section class="hero">
+    <div class="logo serif">Halcyon</div>
+    <h1 class="serif">Dry spell<br><em>ahead.</em></h1>
+    <div class="cta">
+      <p>Rain Serum is here.</p>
+      <a class="btn btn-dark" href="#">Shop now</a>
+    </div>
+  </section>
+
+  <section class="forecast">
+    <div class="label">This week's humidity</div>
+    <div class="num serif">28%</div>
+    <div class="chips">
+      <div class="chip">Wind: brisk</div>
+      <div class="chip">Heating: on</div>
+      <div class="chip">Skin: <b>thirsty</b></div>
+    </div>
+  </section>
+
+  <section class="texture">
+    <div class="copy">
+      <h2 class="serif">Sinks in<br>like rain.</h2>
+      <p>Three hyaluronic acids. One drop of squalane.</p>
+      <a class="btn btn-dark" href="#">Shop Rain Serum, £34</a>
+    </div>
+  </section>
+
+  <section class="result">
+    <div class="photo"><div class="tag">Dewy all day<span>Forecast from day 3</span></div></div>
+    <h2 class="serif">Clear skies<br>from here.</h2>
+    <a class="btn btn-gold" href="#">Get 15% off your first bottle</a>
+  </section>
+
+</div>
+</body>
+</html>

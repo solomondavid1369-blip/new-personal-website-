@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FIZZWELL | Blood Orange Yuzu</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Work+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{--cream:#FFF4DE;--orange:#F2542D;--yellow:#FFC93C;--teal:#0E5E6F;--ink:#1A1A2E;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#E9DCC0;font-family:'Work Sans',Arial,sans-serif;color:var(--ink)}
+  .email{width:600px;margin:30px auto;background:var(--cream);overflow:hidden}
+  .b{font-family:'Bangers',Impact,sans-serif;letter-spacing:1px;font-weight:400}
+  section{position:relative;width:600px}
+  .btn{display:inline-block;padding:16px 36px;font-size:20px;font-weight:800;text-decoration:none;border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink)}
+  .btn-y{background:var(--yellow);color:var(--ink)}
+  .btn-o{background:var(--orange);color:var(--cream)}
+
+  /* 1. Hero */
+  .hero{height:760px;background:url('https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261107_122325_e3cabbc9-d03b-4c05-ba55-a2f133ae60fd.png') center bottom/cover}
+  .hero::after{content:"";position:absolute;inset:auto 0 0 0;height:150px;background:linear-gradient(180deg,rgba(255,244,222,0),var(--cream))}
+  .logo{position:absolute;top:26px;left:0;right:0;text-align:center;font-size:34px;color:var(--yellow);text-shadow:3px 3px 0 var(--ink);z-index:2}
+  .hero h1{position:absolute;top:84px;left:20px;right:20px;text-align:center;font-size:60px;line-height:.98;color:var(--cream);text-shadow:4px 4px 0 var(--ink);z-index:2}
+  .hero h1 span{color:var(--yellow)}
+  .hero .cta{position:absolute;bottom:40px;left:0;right:0;text-align:center;z-index:2}
+
+  /* 2. Strip */
+  .strip{padding:30px 30px 56px;text-align:center;background:linear-gradient(180deg,var(--cream) 0%,#FFE3A6 100%)}
+  .strip h2{font-size:44px;margin-bottom:24px}
+  .panels{display:flex;gap:16px}
+  .panel{flex:1;border:3px solid var(--ink);background:#fff;box-shadow:6px 6px 0 var(--ink);text-align:left}
+  .panel .img{height:250px;background-size:cover;background-position:center;border-bottom:3px solid var(--ink)}
+  .panel p{padding:12px 14px;font-size:20px;line-height:1.2}
+  .panel p b{font-family:'Bangers',Impact,sans-serif;font-weight:400;font-size:26px;color:var(--orange);display:block}
+  .strip .cta{margin-top:36px}
+
+  /* 3. Squad */
+  .squad{padding:44px 0 56px;text-align:center;background:linear-gradient(180deg,#FFE3A6 0%,var(--cream) 100%)}
+  .squad h2{font-size:64px;line-height:1;color:var(--orange);text-shadow:3px 3px 0 var(--ink)}
+  .squad .sub{font-size:20px;margin:8px 0 18px}
+  .squad .img{height:450px;background:url('https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261107_122323_42adfe0b-8afa-4049-ae48-57838ad576b7.png') center/cover}
+  .squad .cta{margin-top:20px}
+
+  /* 4. Finale: the one hard edge */
+  .finale{padding:56px 40px 64px;text-align:center;background:var(--teal);border-top:5px solid var(--ink)}
+  .finale .big{font-size:120px;line-height:.9;color:var(--yellow);text-shadow:6px 6px 0 var(--ink)}
+  .chips{display:flex;justify-content:center;gap:10px;margin:28px 0 34px}
+  .chips span{padding:10px 16px;border:2px solid var(--yellow);color:var(--cream);font-size:20px;font-weight:600}
+</style>
+</head>
+<body>
+<div class="email">
+
+  <section class="hero">
+    <div class="logo b">FIZZWELL</div>
+    <h1 class="b">The 3pm slump<br><span>never saw it coming</span></h1>
+    <div class="cta"><a class="btn btn-y" href="#">Grab a 12-pack</a></div>
+  </section>
+
+  <section class="strip">
+    <h2 class="b">Meanwhile, at a desk near you...</h2>
+    <div class="panels">
+      <div class="panel"><div class="img" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261106_201121_4797907f-628a-4f93-96de-418d39c907e3.png')"></div><p><b>3:00 PM</b>Soul: elsewhere.</p></div>
+      <div class="panel"><div class="img" style="background-image:url('https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261107_122321_6fd1e919-74bd-4dfe-80cb-dc4fe7ef614e.png')"></div><p><b>3:01 PM</b>Inbox: terrified.</p></div>
+    </div>
+    <div class="cta"><a class="btn btn-o" href="#">Save your afternoon</a></div>
+  </section>
+
+  <section class="squad">
+    <h2 class="b">Assemble the squad</h2>
+    <p class="sub">Three flavours. Zero sidekicks needed.</p>
+    <div class="img"></div>
+    <div class="cta"><a class="btn btn-y" href="#">Build your 12-pack</a></div>
+  </section>
+
+  <section class="finale">
+    <div class="big b">KA-FIZZ!</div>
+    <div class="chips"><span>40 cal</span><span>0g added sugar</span><span>Real fruit</span></div>
+    <a class="btn btn-o" href="#">Shop Blood Orange Yuzu</a>
+  </section>
+
+</div>
+</body>
+</html>

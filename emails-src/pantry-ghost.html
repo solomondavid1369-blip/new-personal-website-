@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pantry Ghost | The usual suspects</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&display=swap" rel="stylesheet">
+<style>
+  :root{--night:#241B3A;--deep:#170F28;--ghost:#F4F1FF;--orange:#FF8A3D;--yellow:#FFD447;--lilac:#9B8AC4;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#120B1F;font-family:'Bricolage Grotesque',Arial,sans-serif;color:var(--ghost)}
+  .email{width:600px;margin:30px auto;background:var(--night);overflow:hidden}
+  section{position:relative;width:600px}
+  h1,h2{font-weight:800;letter-spacing:-1px}
+  .btn{display:inline-block;padding:18px 38px;border-radius:999px;font-size:20px;font-weight:800;text-decoration:none}
+  .btn-orange{background:var(--orange);color:var(--deep)}
+  .btn-yellow{background:var(--yellow);color:var(--deep)}
+
+  /* 1. Hero */
+  .hero{height:750px;background:url('https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261107_121142_099e7102-b49c-4735-b7c4-d51b6125a3b6.png') center bottom/cover}
+  .hero::after{content:"";position:absolute;inset:auto 0 0 0;height:170px;background:linear-gradient(180deg,rgba(36,27,58,0),var(--night))}
+  .logo{position:absolute;top:30px;left:0;right:0;text-align:center;font-size:24px;font-weight:800;z-index:2}
+  .logo span{color:var(--orange)}
+  .hero h1{position:absolute;top:96px;left:30px;right:30px;text-align:center;font-size:70px;line-height:.98;z-index:2}
+  .hero h1 em{font-style:normal;color:var(--orange)}
+  .hero .cta{position:absolute;bottom:44px;left:0;right:0;text-align:center;z-index:2}
+
+  /* 2. Lineup */
+  .lineup{padding:56px 0 60px;text-align:center;background:var(--night)}
+  .lineup h2{font-size:56px;line-height:1}
+  .lineup .sub{font-size:20px;color:var(--lilac);margin:10px 0 26px}
+  .wall{position:relative;height:450px;background:url('https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261107_121139_b3dbe066-9f80-472f-8770-b36a42c2b5b3.png') center/cover}
+  .wall::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(180deg,rgba(244,241,255,.14) 0 2px,transparent 2px 75px);mix-blend-mode:screen}
+  .wall::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--night) 0%,rgba(36,27,58,0) 12%,rgba(36,27,58,0) 88%,var(--night) 100%)}
+  .names{display:flex;justify-content:space-around;padding:22px 30px 32px}
+  .names div{width:30%;font-size:20px;font-weight:800;line-height:1.15}
+  .names small{display:block;font-size:14px;font-weight:500;color:var(--lilac);margin-top:4px}
+
+  /* 3. Caught */
+  .caught{height:640px;background:url('https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261107_121140_65a24dc3-aa00-4913-ad03-490e5dfb0977.png') center/cover}
+  .caught::before{content:"";position:absolute;inset:0 0 auto 0;height:130px;background:linear-gradient(180deg,var(--night),rgba(36,27,58,0))}
+  .caught::after{content:"";position:absolute;inset:auto 0 0 0;height:240px;background:linear-gradient(180deg,rgba(36,27,58,0),var(--night) 85%)}
+  .stamp{position:absolute;top:70px;right:36px;z-index:2;transform:rotate(-10deg);border:5px solid var(--orange);color:var(--orange);padding:6px 18px;font-size:46px;font-weight:800;border-radius:10px;background:rgba(23,15,40,.35)}
+  .caught p{position:absolute;left:40px;right:40px;bottom:42px;z-index:2;font-size:36px;font-weight:800;line-height:1.1}
+  .caught p span{color:var(--yellow)}
+
+  /* 4. Offer: the one hard edge */
+  .offer{padding:64px 40px 70px;text-align:center;background:linear-gradient(180deg,var(--night) 0%,#4A2A4A 45%,var(--orange) 100%)}
+  .offer .big{font-size:150px;font-weight:800;line-height:.9;letter-spacing:-4px}
+  .offer h2{font-size:44px;line-height:1.05;margin:16px 0 30px;color:var(--deep)}
+</style>
+</head>
+<body>
+<div class="email">
+
+  <section class="hero">
+    <div class="logo">pantry<span>ghost</span></div>
+    <h1>Someone's been<br>in the <em>pantry.</em></h1>
+    <div class="cta"><a class="btn btn-orange" href="#">See the evidence</a></div>
+  </section>
+
+  <section class="lineup">
+    <h2>The usual suspects</h2>
+    <p class="sub">Three new flavours. One of them did it.</p>
+    <div class="wall"></div>
+    <div class="names">
+      <div>Midnight Cheddar<small>Last seen: your desk</small></div>
+      <div style="color:var(--orange)">Ghost Pepper<small>Armed. Very spicy.</small></div>
+      <div style="color:var(--yellow)">Sour Cream &amp; Boo<small>Says it was framed</small></div>
+    </div>
+    <a class="btn btn-yellow" href="#">Pick a suspect</a>
+  </section>
+
+  <section class="caught">
+    <div class="stamp">CAUGHT</div>
+    <p>Case closed.<br>He had the <span>cheddar.</span></p>
+  </section>
+
+  <section class="offer">
+    <div class="big">£9</div>
+    <h2>Any 3 bags.<br>No questions asked.</h2>
+    <a class="btn" style="background:var(--deep);color:var(--yellow)" href="#">Stock the pantry</a>
+  </section>
+
+</div>
+</body>
+</html>

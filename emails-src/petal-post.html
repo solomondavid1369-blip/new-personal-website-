@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Petal Post | Your flowers are waiting</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--blush:#F7D6D0;--rose:#D9466F;--leaf:#2F5D50;--cream:#FFF8F3;--ink:#3A2A2E;--muted:#7D6468;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#EFD9D3;font-family:'Manrope',Arial,sans-serif;color:var(--ink)}
+  .email{width:600px;margin:30px auto;background:var(--blush);overflow:hidden}
+  .p{font-family:'Playfair Display',Georgia,serif}
+  section{position:relative;width:600px}
+  .btn{display:inline-block;padding:18px 38px;border-radius:999px;font-size:20px;font-weight:700;text-decoration:none}
+  .btn-rose{background:var(--rose);color:var(--cream)}
+  .btn-leaf{background:var(--leaf);color:var(--cream)}
+  .btn-cream{background:var(--cream);color:var(--rose)}
+
+  /* 1. Hero */
+  .hero{height:760px;background:url('https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261107_122322_dd6cb4db-c124-497a-abda-345269d8d399.png') center bottom/cover}
+  .hero::after{content:"";position:absolute;inset:auto 0 0 0;height:180px;background:linear-gradient(180deg,rgba(247,214,208,0),var(--blush))}
+  .logo{position:absolute;top:30px;left:0;right:0;text-align:center;font-size:28px;font-style:italic;color:var(--rose);z-index:2}
+  .hero h1{position:absolute;top:92px;left:20px;right:20px;text-align:center;font-size:70px;line-height:1;font-weight:500;z-index:2}
+  .hero h1 em{color:var(--rose)}
+  .hero .cta{position:absolute;bottom:44px;left:0;right:0;text-align:center;z-index:2}
+
+  /* 2. The timeline */
+  .days{padding:40px 0 60px;text-align:center;background:var(--blush)}
+  .days h2{font-size:44px;line-height:1.05;font-weight:500;padding:0 40px}
+  .days .img{height:600px;margin-top:24px;background:url('https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261107_122324_a3b55baf-ff9d-43d6-a387-3cb70a7aab77.png') center/cover}
+  .labels{display:flex;justify-content:space-around;padding:20px 30px 34px}
+  .labels div{width:30%;font-size:20px;font-weight:700}
+  .labels small{display:block;font-size:16px;font-weight:400;color:var(--muted)}
+  .labels div:last-child{color:var(--rose)}
+
+  /* 3. Offer */
+  .offer{padding:70px 40px 74px;text-align:center;background:linear-gradient(180deg,var(--blush) 0%,var(--rose) 60%)}
+  .offer .eyebrow{font-size:20px;font-weight:600;color:var(--ink)}
+  .offer h2{font-size:66px;line-height:.95;color:var(--cream);margin:10px 0 14px;font-weight:700}
+  .offer p{font-size:20px;color:var(--cream);margin-bottom:28px}
+
+  /* 4. Joy */
+  .joy{height:760px;background:url('https://d8j0ntlcm91z4.cloudfront.net/user_3EH1EVlj1q4IZbpc1ehVHrTO8Ra/hf_20261107_122325_fc063423-f226-48ee-825e-8fc96846bc34.png') center/cover}
+  .joy::before{content:"";position:absolute;inset:0 0 auto 0;height:150px;background:linear-gradient(180deg,var(--rose),rgba(217,70,111,0))}
+  .joy::after{content:"";position:absolute;inset:auto 0 0 0;height:320px;background:linear-gradient(180deg,rgba(47,93,80,0),var(--leaf) 75%)}
+  .joy .copy{position:absolute;left:40px;right:40px;bottom:48px;text-align:center;z-index:2}
+  .joy h2{font-size:58px;line-height:1;font-weight:500;color:var(--cream);margin-bottom:26px}
+  .joy h2 em{color:var(--blush)}
+</style>
+</head>
+<body>
+<div class="email">
+
+  <section class="hero">
+    <div class="logo p">Petal Post</div>
+    <h1 class="p">Your flowers are<br>still <em>waiting.</em></h1>
+    <div class="cta"><a class="btn btn-rose" href="#">Rescue them</a></div>
+  </section>
+
+  <section class="days">
+    <h2 class="p">They're starting to<br>take it personally.</h2>
+    <div class="img"></div>
+    <div class="labels">
+      <div>Day 1<small>Hopeful</small></div>
+      <div>Day 2<small>Concerned</small></div>
+      <div>Day 3<small>Very dramatic</small></div>
+    </div>
+    <a class="btn btn-leaf" href="#">Back to my cart</a>
+  </section>
+
+  <section class="offer">
+    <div class="eyebrow">We saved them for you</div>
+    <h2 class="p">Free delivery</h2>
+    <p>If you check out before midnight.</p>
+    <a class="btn btn-cream" href="#">Complete my order</a>
+  </section>
+
+  <section class="joy">
+    <div class="copy">
+      <h2 class="p">Make someone's<br><em>whole week.</em></h2>
+      <a class="btn btn-rose" href="#">Send the flowers</a>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
