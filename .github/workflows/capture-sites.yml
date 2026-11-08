@@ -1,0 +1,40 @@
+name: Capture site screenshots
+
+# Saves a 1440px homepage screenshot of each live concept site to public/work/.
+# Runs here because the sites are not reachable from every environment.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "content/work.ts"
+      - "scripts/capture-sites.mjs"
+      - ".github/workflows/capture-sites.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: node scripts/capture-sites.mjs
+      - name: Commit screenshots
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/work
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Capture site screenshots"
+            git pull --rebase origin main
+            git push
+          fi

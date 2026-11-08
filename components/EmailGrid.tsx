@@ -4,7 +4,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, m } from "framer-motion";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import KindBadge from "./KindBadge";
 import MotionProvider from "./MotionProvider";
+import { OPEN_EMAIL_EVENT } from "@/lib/email-events";
 import { emailTypes, type Email, type EmailType } from "@/content/emails";
 
 type Item = Email & { size: { width: number; height: number } };
@@ -33,6 +35,18 @@ export default function EmailGrid({ items }: { items: Item[] }) {
     const t = setTimeout(() => ScrollTrigger.refresh(), 450);
     return () => clearTimeout(t);
   }, [filter]);
+
+  // Other sections (the work cards) can open an email here by slug.
+  useEffect(() => {
+    const onOpen = (e: Event) => {
+      const slug = (e as CustomEvent<string>).detail;
+      if (!items.some((i) => i.slug === slug)) return;
+      setFilter("All");
+      setOpenSlug(slug);
+    };
+    window.addEventListener(OPEN_EMAIL_EVENT, onOpen);
+    return () => window.removeEventListener(OPEN_EMAIL_EVENT, onOpen);
+  }, [items]);
 
   const openIndex = openSlug ? shown.findIndex((i) => i.slug === openSlug) : -1;
 
@@ -90,16 +104,6 @@ export default function EmailGrid({ items }: { items: Item[] }) {
         />
       )}
     </MotionProvider>
-  );
-}
-
-function KindBadge({ kind }: { kind: Email["kind"] }) {
-  return kind === "Client" ? (
-    <span className="rounded-full bg-accent px-3 py-1 text-xs font-semibold text-bg">Client</span>
-  ) : (
-    <span className="rounded-full border border-accent bg-bg/90 px-3 py-1 text-xs font-semibold text-accent backdrop-blur">
-      Concept
-    </span>
   );
 }
 

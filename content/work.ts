@@ -1,6 +1,5 @@
 // Projects, experience and contact details. To add a project, add one entry to `work`.
 // Emails live in content/emails.ts.
-// Anything in [square brackets] is a placeholder still to be filled in.
 
 export type WorkTag = "Website" | "Emails" | "Shopify";
 
@@ -9,12 +8,15 @@ export type WorkItem = {
   title: string;
   description: string;
   tags: WorkTag[];
+  /** "Client" shows a solid orange badge, "Concept" an outlined one. */
+  kind: "Client" | "Concept";
   year: number;
+  /** Homepage screenshot, 1440 wide, top of the page. */
   image: string;
   imageAlt: string;
   url?: string;
-  concept?: boolean;
-  stack?: string[];
+  /** Slug of this brand's email in content/emails.ts; adds "See the email". */
+  emailSlug?: string;
   /** Turns the card into an expandable case study. */
   caseStudy?: CaseStudy;
 };
@@ -26,18 +28,43 @@ export type CaseStudy = {
   result: string;
 };
 
+// Shown in this order in Recent work and in the cards under the hero.
 export const work: WorkItem[] = [
   {
-    slug: "chidinma-obi",
-    title: "Chidinma Obi",
-    description: "Portfolio site for a career coach and virtual assistant.",
+    slug: "halcyon",
+    title: "Halcyon",
+    description: "Skincare brand site built around a skin forecast, with an interactive humidity slider.",
     tags: ["Website"],
+    kind: "Concept",
     year: 2026,
-    image: "/work/chidinma-obi.jpg",
-    imageAlt: "Chidinma Obi portfolio website homepage",
-    url: "https://ugomma-portfolio.vercel.app",
-    concept: true,
-    stack: ["Next.js", "Tailwind", "GSAP", "Lenis", "Framer Motion"],
+    image: "/work/halcyon.jpg",
+    imageAlt: "Halcyon skincare website homepage",
+    url: "https://hlacyon-site.vercel.app/",
+    emailSlug: "halcyon",
+  },
+  {
+    slug: "lumen-brew",
+    title: "Lumen Brew",
+    description: "Coffee subscription site that moves from night to dawn as you scroll, with a plan builder.",
+    tags: ["Website"],
+    kind: "Concept",
+    year: 2026,
+    image: "/work/lumen-brew.jpg",
+    imageAlt: "Lumen Brew coffee subscription website homepage",
+    url: "https://lumen-brew-site-6knp.vercel.app/",
+    emailSlug: "lumen-brew",
+  },
+  {
+    slug: "orbit-audio",
+    title: "Orbit Audio",
+    description: "Premium headphone site with a space mission theme and a noise-cancelling demo.",
+    tags: ["Website"],
+    kind: "Concept",
+    year: 2026,
+    image: "/work/orbit-audio.jpg",
+    imageAlt: "Orbit Audio headphone website homepage",
+    url: "https://orbit-audio-site.vercel.app/",
+    emailSlug: "orbit-audio",
   },
   {
     slug: "mp-advertorial",
@@ -45,6 +72,7 @@ export const work: WorkItem[] = [
     description:
       "Long-form sales page built as a custom Shopify section after the page builder could not handle the layout.",
     tags: ["Shopify"],
+    kind: "Client",
     year: 2026,
     image: "/work/mp-advertorial.jpg",
     imageAlt: "Milky Plant ShowerT advertorial sales page",
@@ -55,23 +83,6 @@ export const work: WorkItem[] = [
       result: "[PLACEHOLDER: result to add]",
     },
   },
-  {
-    slug: "mp-french",
-    title: "Milky Plant: French store",
-    description:
-      "Full French localisation with Shopify Markets, translations and rebuilt Klaviyo flows.",
-    tags: ["Shopify", "Emails"],
-    year: 2026,
-    image: "/work/mp-french.jpg",
-    imageAlt: "Milky Plant French Shopify store",
-    url: "https://milkyplant.com/fr",
-    caseStudy: {
-      problem: "Milky Plant needed to sell properly to French customers.",
-      built: "Full French localisation with Shopify Markets, translations and rebuilt Klaviyo flows.",
-      result: "[PLACEHOLDER: result to add]",
-    },
-  },
-  // [More sites from the 32-site sprint get added here as they ship.]
 ];
 
 export type ExperienceItem = {

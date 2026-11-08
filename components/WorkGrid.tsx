@@ -4,7 +4,9 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { AnimatePresence, m } from "framer-motion";
 import MotionProvider from "./MotionProvider";
+import KindBadge from "./KindBadge";
 import Placeholder from "./Placeholder";
+import { openEmail } from "@/lib/email-events";
 import Thumb from "./Thumb";
 import { isPlaceholder, showPlaceholders } from "@/lib/placeholder";
 import { workFilters, type WorkItem, type WorkTag } from "@/content/work";
@@ -22,6 +24,8 @@ const isLiveUrl = (url?: string) => !!url && /^https?:\/\//.test(url);
 
 export default function WorkGrid({ items }: { items: Item[] }) {
   const [filter, setFilter] = useState<Filter>("All");
+  // Only offer tabs that still have work in them.
+  const filters = workFilters.filter((f) => f === "All" || items.some((i) => i.tags.includes(filterTag[f])));
   const shown = filter === "All" ? items : items.filter((i) => i.tags.includes(filterTag[filter]));
 
   // The grid height changes with the filter, which moves every scroll-driven
@@ -39,7 +43,7 @@ export default function WorkGrid({ items }: { items: Item[] }) {
   return (
     <MotionProvider>
       <div role="group" aria-label="Filter work" className="mb-8 flex flex-wrap gap-2">
-        {workFilters.map((f) => {
+        {filters.map((f) => {
           const active = f === filter;
           return (
             <button
@@ -94,27 +98,22 @@ function WorkCard({ item }: { item: Item }) {
         title={item.title}
         hasImage={item.hasImage}
         sizes="(min-width: 768px) 50vw, 100vw"
-        className="aspect-[4/5] transition-transform duration-500 group-hover:scale-[0.985]"
+        className="aspect-[16/10] transition-transform duration-500 group-hover:scale-[0.985]"
       />
-      <div className="absolute top-3 right-3 flex gap-1.5">
-        {item.concept && (
-          <span className="rounded-full border border-accent bg-bg/90 px-3 py-1 text-xs font-semibold text-accent backdrop-blur">
-            Concept
+      <div className="absolute top-3 right-3 flex flex-wrap justify-end gap-1.5">
+        {item.emailSlug && (
+          <span className="rounded-full border border-line bg-bg/90 px-3 py-1 text-xs font-medium backdrop-blur">
+            Website + email
           </span>
         )}
-        {item.tags.map((t) => (
-          <span key={t} className="rounded-full border border-line bg-bg/90 px-3 py-1 text-xs font-medium backdrop-blur">
-            {t}
-          </span>
-        ))}
+        <KindBadge kind={item.kind} />
       </div>
     </div>
   );
   const meta = (
     <div className="mt-5 flex flex-col gap-1.5">
       <span className="font-mono text-xs tracking-[0.12em] text-accent uppercase">
-        {item.tags.join(" · ")}
-        {item.concept && " · Concept"}
+        {item.tags.join(" · ")} · {item.kind}
       </span>
       <div className="flex items-baseline justify-between gap-4">
         <h3 className="text-xl font-bold md:text-2xl">{item.title}</h3>
@@ -126,17 +125,36 @@ function WorkCard({ item }: { item: Item }) {
 
   if (item.caseStudy) return <CaseStudyCard item={item} media={media} meta={meta} />;
 
-  return live ? (
-    <a href={item.url} target="_blank" rel="noopener noreferrer" className="group block">
-      {media}
-      {meta}
-      <span className="mt-2 inline-block text-sm font-semibold underline-offset-4 group-hover:underline">Visit site ↗</span>
-    </a>
-  ) : (
-    <div className="group">
-      {media}
-      {meta}
-    </div>
+  return (
+    <article className="group relative">
+      {live ? (
+        <a href={item.url} target="_blank" rel="noopener noreferrer" className="block">
+          {media}
+          {meta}
+        </a>
+      ) : (
+        <>
+          {media}
+          {meta}
+        </>
+      )}
+      <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-semibold">
+        {live && (
+          <a href={item.url} target="_blank" rel="noopener noreferrer" className="underline-offset-4 hover:underline">
+            Visit site ↗
+          </a>
+        )}
+        {item.emailSlug && (
+          <button
+            type="button"
+            onClick={() => openEmail(item.emailSlug!)}
+            className="text-accent underline-offset-4 hover:underline"
+          >
+            See the email
+          </button>
+        )}
+      </div>
+    </article>
   );
 }
 
