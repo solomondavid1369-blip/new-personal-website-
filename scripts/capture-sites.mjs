@@ -25,10 +25,12 @@ const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, dev
 let failed = 0;
 for (const site of sites) {
   try {
-    await page.goto(site.url, { waitUntil: "networkidle", timeout: 60_000 });
+    // Stores like Shopify keep analytics running, so they never go network-idle.
+    // Wait for the load event, then give images and intro animations time to settle.
+    await page.goto(site.url, { waitUntil: "load", timeout: 60_000 });
     await page.evaluate(() => document.fonts.ready);
-    // Let intro animations settle, then dismiss any pop-up (newsletter, cookies).
-    await page.waitForTimeout(3000);
+    await page.waitForTimeout(4000);
+    // Dismiss any pop-up (newsletter, cookies).
     await page.keyboard.press("Escape");
     await page.waitForTimeout(800);
     await page.screenshot({ path: path.join(root, "public", site.image), type: "jpeg", quality: 85 });

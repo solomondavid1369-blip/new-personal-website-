@@ -26,7 +26,9 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium
       - run: node scripts/capture-sites.mjs
+      # Keep whatever was captured even if one site failed.
       - name: Commit screenshots
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
