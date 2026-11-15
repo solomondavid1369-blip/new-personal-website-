@@ -10,13 +10,14 @@ import { experience, work } from "@/content/work";
 const services = ["Websites", "Shopify", "Email design", "Klaviyo flows"];
 const steps = ["Brief and research", "Design in Figma", "Build and test", "Launch and hand over"];
 
-// The four projects that front the site, in the same order as Recent work.
-const featured = work.slice(0, 4);
+// The projects that front the site, in the same order as Recent work.
+// The featured one comes first and spans the full row.
+const featured = work.slice(0, 5);
 // The word-mark card swaps between a site and an email from the same brand.
-const site = work[0];
+const site = work.find((w) => w.slug === "halcyon") ?? work[0];
 const email = emails.find((e) => e.slug === site.emailSlug) ?? emails[0];
 // Different rise distances for the intro cards, so they drift at different speeds.
-const drift = [40, 100, 70, 120];
+const drift = [30, 40, 100, 70, 120];
 
 const sectionBase = "relative flex flex-col px-4 py-20 md:px-12 md:py-28";
 
@@ -81,7 +82,7 @@ export default function PortraitZone() {
           </p>
           <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             {featured.map((w, i) => (
-              <li key={w.slug} data-parallax={drift[i]}>
+              <li key={w.slug} data-parallax={drift[i]} className={w.featured ? "col-span-2 sm:col-span-4" : undefined}>
                 <a
                   href={w.url}
                   target="_blank"
@@ -93,8 +94,8 @@ export default function PortraitZone() {
                     src={w.image}
                     alt={w.imageAlt}
                     title={w.title}
-                    sizes="(min-width: 640px) 150px, 45vw"
-                    className="aspect-[4/3] transition-transform duration-300 group-hover:-translate-y-1"
+                    sizes={w.featured ? "(min-width: 640px) 576px, 92vw" : "(min-width: 640px) 150px, 45vw"}
+                    className={`${w.featured ? "aspect-[16/7]" : "aspect-[4/3]"} transition-transform duration-300 group-hover:-translate-y-1`}
                   />
                   <span className="mt-2 flex items-center justify-between gap-2 text-xs font-semibold">
                     <span className="truncate">{w.title.replace("Milky Plant: ", "")}</span>

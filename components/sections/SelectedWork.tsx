@@ -4,7 +4,12 @@ import { publicFileExists } from "@/lib/public-file";
 
 // F. Selected work. Everything comes from content/work.ts.
 export default function SelectedWork() {
-  const items = work.map((w) => ({ ...w, hasImage: publicFileExists(w.image) }));
+  const items = work.map((w) => ({
+    ...w,
+    hasImage: publicFileExists(w.image),
+    // The video only plays once the file is actually in /public.
+    hasVideo: !!w.video && publicFileExists(w.video),
+  }));
 
   return (
     <section id="work" aria-labelledby="work-title" className="px-4 pt-8 pb-12 md:px-12 md:pt-16 md:pb-16">

@@ -11,7 +11,7 @@ import Thumb from "./Thumb";
 import { isPlaceholder, showPlaceholders } from "@/lib/placeholder";
 import { workFilters, type WorkItem, type WorkTag } from "@/content/work";
 
-type Item = WorkItem & { hasImage: boolean };
+type Item = WorkItem & { hasImage: boolean; hasVideo?: boolean };
 type Filter = (typeof workFilters)[number];
 
 const filterTag: Record<Exclude<Filter, "All">, WorkTag> = {
@@ -74,6 +74,7 @@ export default function WorkGrid({ items }: { items: Item[] }) {
             <m.li
               key={item.slug}
               layout
+              className={item.featured ? "md:col-span-2" : undefined}
               initial={{ opacity: 0, scale: 0.97 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.97 }}
@@ -97,10 +98,15 @@ function WorkCard({ item }: { item: Item }) {
         alt={item.imageAlt}
         title={item.title}
         hasImage={item.hasImage}
-        sizes="(min-width: 768px) 50vw, 100vw"
-        className="aspect-[16/10] transition-transform duration-500 group-hover:scale-[0.985]"
-      />
+        sizes={item.featured ? "100vw" : "(min-width: 768px) 50vw, 100vw"}
+        className={`${item.featured ? "aspect-[16/10] md:aspect-[21/9]" : "aspect-[16/10]"} transition-transform duration-500 group-hover:scale-[0.985]`}
+      >
+        {item.hasVideo && item.video && <CardVideo src={item.video} poster={item.image} />}
+      </Thumb>
       <div className="absolute top-3 right-3 flex flex-wrap justify-end gap-1.5">
+        {item.featured && (
+          <span className="rounded-full bg-text px-3 py-1 text-xs font-semibold text-bg">Featured</span>
+        )}
         {item.emailSlug && (
           <span className="rounded-full border border-line bg-bg/90 px-3 py-1 text-xs font-medium backdrop-blur">
             Website + email
@@ -116,10 +122,21 @@ function WorkCard({ item }: { item: Item }) {
         {item.tags.join(" · ")} · {item.kind}
       </span>
       <div className="flex items-baseline justify-between gap-4">
-        <h3 className="text-xl font-bold md:text-2xl">{item.title}</h3>
+        <h3 className={item.featured ? "text-2xl font-bold md:text-4xl" : "text-xl font-bold md:text-2xl"}>
+          {item.title}
+        </h3>
         <span className="font-mono text-xs text-text-dim">{item.year}</span>
       </div>
-      <p className="text-text-dim">{item.description}</p>
+      <p className={`text-text-dim ${item.featured ? "max-w-3xl md:text-lg" : ""}`}>{item.description}</p>
+      {item.stack && (
+        <ul className="mt-1 flex flex-wrap gap-1.5" aria-label="Built with">
+          {item.stack.map((t) => (
+            <li key={t} className="rounded-full border border-line px-2.5 py-0.5 font-mono text-[11px] tracking-[0.08em] text-text-dim uppercase">
+              {t}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 
@@ -234,5 +251,52 @@ function CaseStudyCard({ item, media, meta }: { item: Item; media: ReactNode; me
         )}
       </AnimatePresence>
     </div>
+  );
+}
+
+/**
+ * Muted, looping preview over the screenshot. On a desktop pointer it plays
+ * while the card is hovered; on touch screens it plays while the card is in
+ * view. Never plays for visitors who prefer reduced motion.
+ */
+function CardVideo({ src, poster }: { src: string; poster: string }) {
+  const ref = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = ref.current!;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const play = () => video.play().catch(() => {});
+    const stop = () => {
+      video.pause();
+      video.currentTime = 0;
+    };
+
+    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      const card = video.closest("article") ?? video;
+      card.addEventListener("mouseenter", play);
+      card.addEventListener("mouseleave", stop);
+      return () => {
+        card.removeEventListener("mouseenter", play);
+        card.removeEventListener("mouseleave", stop);
+      };
+    }
+
+    const io = new IntersectionObserver(([entry]) => (entry.isIntersecting ? play() : stop()), { threshold: 0.5 });
+    io.observe(video);
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <video
+      ref={ref}
+      src={src}
+      poster={poster}
+      muted
+      loop
+      playsInline
+      preload="none"
+      aria-hidden="true"
+      className="absolute inset-0 h-full w-full object-cover object-top"
+    />
   );
 }

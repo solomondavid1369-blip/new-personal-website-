@@ -17,6 +17,16 @@ export type WorkItem = {
   url?: string;
   /** Slug of this brand's email in content/emails.ts; adds "See the email". */
   emailSlug?: string;
+  /** Shown first and full width in Recent work, with a "Featured" tag. */
+  featured?: boolean;
+  /** Small tech chips under the description, e.g. ["Next.js", "GSAP"]. */
+  stack?: string[];
+  /**
+   * Optional muted, looping video under /public. Plays on hover (desktop) or
+   * when in view (touch), with the screenshot as its poster. Ignored until the
+   * file exists.
+   */
+  video?: string;
   /** Turns the card into an expandable case study. */
   caseStudy?: CaseStudy;
 };
@@ -30,6 +40,22 @@ export type CaseStudy = {
 
 // Shown in this order in Recent work and in the cards under the hero.
 export const work: WorkItem[] = [
+  {
+    slug: "pantry-ghost",
+    title: "Pantry Ghost",
+    description:
+      "Motion-heavy snack brand store with a scroll-driven flavour carousel, a filterable shop, product pages, a build-your-own box and a full cart.",
+    tags: ["Website"],
+    kind: "Concept",
+    year: 2026,
+    image: "/work/pantry-ghost.jpg",
+    imageAlt: "Pantry Ghost snack store website homepage",
+    url: "https://pantry-ghost-site-ery5.vercel.app/",
+    emailSlug: "pantry-ghost",
+    featured: true,
+    stack: ["Next.js", "GSAP", "Ecommerce"],
+    video: "/work/pantry-ghost.mp4",
+  },
   {
     slug: "halcyon",
     title: "Halcyon",

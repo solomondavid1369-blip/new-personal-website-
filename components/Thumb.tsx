@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { ReactNode } from "react";
 
 type Props = {
   src: string;
@@ -8,11 +9,13 @@ type Props = {
   sizes: string;
   className?: string;
   priority?: boolean;
+  /** Layered over the image, e.g. a video. */
+  children?: ReactNode;
 };
 
 // Rounded image card. Shows a visible [screenshot] placeholder until the
 // real image is in /public. Safe to use from client components.
-export default function Thumb({ src, alt, title, hasImage, sizes, className = "", priority }: Props) {
+export default function Thumb({ src, alt, title, hasImage, sizes, className = "", priority, children }: Props) {
   return (
     <div className={`relative overflow-hidden rounded-[20px] border border-line bg-bg-raised ${className}`}>
       {hasImage ? (
@@ -23,6 +26,7 @@ export default function Thumb({ src, alt, title, hasImage, sizes, className = ""
           <span className="text-sm font-semibold leading-tight">{title}</span>
         </div>
       )}
+      {children}
     </div>
   );
 }
