@@ -16,7 +16,8 @@ permissions:
 
 jobs:
   capture:
-    runs-on: ubuntu-latest
+    # Pinned: Playwright 1.56 cannot install Chromium on newer Ubuntu runners.
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
